@@ -3,4 +3,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <color name="White">#FFFFFF</color>
+    <color name="Cornsilk">#FFF8DC</color>
+    <color name="LavenderBlush">#FFF0F5</color>
+    <color name="Gray">#808080</color>
+
 </resources>

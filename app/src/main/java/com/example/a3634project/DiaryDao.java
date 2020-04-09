@@ -8,7 +8,8 @@ import java.util.List;
 
 import io.reactivex.Maybe;
 
-public interface DiaryDao extends Dao {
+@Dao
+public interface DiaryDao {
     @Query("SELECT * FROM diaryEntry")
     Maybe<List<DiaryEntry>> getAll();
 

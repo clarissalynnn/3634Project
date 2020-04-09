@@ -5,13 +5,27 @@
     android:layout_height="match_parent"
     tools:context=".DiaryFragment"
     android:background="@android:color/holo_green_light">
-
     <!-- TODO: Update blank fragment layout -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDiary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_constraintBottom_toBottomOf="parent"
+        android:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/ic_home_black_24dp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Hello Diary Fragment"
         android:textSize="30sp"
         android:textStyle="bold" />
+
 
 </FrameLayout>

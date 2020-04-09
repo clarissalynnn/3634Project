@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ExploreFragment"
-    android:background="@color/LavenderBlush">
+    tools:context=".ExploreFragment">
 
     <TextView
         android:id="@+id/TopicsTv"
@@ -16,7 +15,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="Explore Topics"
-        android:textSize="25sp"
+        android:textColor="#000000"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

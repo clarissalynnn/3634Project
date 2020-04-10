@@ -1,5 +1,6 @@
 package com.example.a3634project;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -18,7 +19,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    //private TextView greetings;
+    private User user;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -30,12 +31,13 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
+        user = (User) getActivity().getIntent().getSerializableExtra("User");
         mRecyclerView = v.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         TextView greetings = v.findViewById(R.id.greetingsTv);
-        greetings.setText(setGreetings());
+        greetings.setText(setGreetings() + " " + user.getFirst_name() + "!");
 
         TopicAdapter.RecyclerViewClickListener listener = new TopicAdapter.RecyclerViewClickListener() {
             @Override

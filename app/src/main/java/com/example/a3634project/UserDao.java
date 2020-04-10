@@ -9,6 +9,7 @@ import java.util.List;
 
 @Dao
 public interface UserDao {
+    //Define various SQL queries here
     @Query("SELECT * FROM user")
     List<User> getAll();
 
@@ -18,6 +19,12 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE first_name LIKE :first AND "
             + "last_name LIKE :last LIMIT 1")
     User findByName(String first, String last);
+
+    @Query("SELECT * FROM User where email= :mail and password= :password")
+    User getUser(String mail, String password);
+
+    @Insert
+    void insert(User user);
 
     @Insert
     void insertAll(User... users);

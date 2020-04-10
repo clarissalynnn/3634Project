@@ -11,7 +11,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.a3634project.Database.UserDao;
+import com.example.a3634project.Database.UserDatabase;
+import com.example.a3634project.Models.User;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -19,7 +24,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText edtLastName;
     private EditText edtEmail;
     private EditText edtPassword;
-    private Button btCancel;
+    private TextView btCancel;
     private Button btSignUp;
 
     private UserDao userDao;

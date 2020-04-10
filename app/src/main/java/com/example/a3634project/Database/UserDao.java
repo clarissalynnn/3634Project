@@ -1,9 +1,11 @@
-package com.example.a3634project;
+package com.example.a3634project.Database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.example.a3634project.Models.User;
 
 import java.util.List;
 

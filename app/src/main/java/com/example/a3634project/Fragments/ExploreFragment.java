@@ -1,4 +1,4 @@
-package com.example.a3634project;
+package com.example.a3634project.Fragments;
 
 import android.os.Bundle;
 
@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.a3634project.Adapters.TopicAdapter;
+import com.example.a3634project.R;
+import com.example.a3634project.Models.Topic;
 
 
 /**

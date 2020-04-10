@@ -9,5 +9,7 @@
     <color name="Cornsilk">#FFF8DC</color>
     <color name="LavenderBlush">#FFF0F5</color>
     <color name="Gray">#808080</color>
-
+    <color name="Navy">#000080</color>
+    <color name="LightSteelBlue">#B0C4DE</color>
+    <color name="Black">#000000</color>
 </resources>

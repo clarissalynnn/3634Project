@@ -1,4 +1,4 @@
-package com.example.a3634project;
+package com.example.a3634project.Models;
 
 import java.util.ArrayList;
 

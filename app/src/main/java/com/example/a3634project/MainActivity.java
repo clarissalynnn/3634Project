@@ -9,6 +9,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.a3634project.Fragments.DiaryFragment;
+import com.example.a3634project.Fragments.ExploreFragment;
+import com.example.a3634project.Fragments.HomeFragment;
+import com.example.a3634project.Fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

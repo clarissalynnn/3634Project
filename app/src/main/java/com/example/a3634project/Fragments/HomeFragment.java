@@ -1,9 +1,7 @@
-package com.example.a3634project;
+package com.example.a3634project.Fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.a3634project.Adapters.TopicAdapter;
+import com.example.a3634project.R;
+import com.example.a3634project.Models.Topic;
+import com.example.a3634project.Models.User;
 
 import java.util.Calendar;
 

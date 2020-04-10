@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.a3634project.DiaryFragment">
+    tools:context="com.example.a3634project.Fragments.DiaryFragment">
 
     <TextView
         android:id="@+id/tvNoteTitle"

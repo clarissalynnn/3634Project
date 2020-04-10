@@ -1,13 +1,15 @@
-package com.example.a3634project;
+package com.example.a3634project.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.a3634project.R;
+import com.example.a3634project.Models.Topic;
 
 import java.util.ArrayList;
 

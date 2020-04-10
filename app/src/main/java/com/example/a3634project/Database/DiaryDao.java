@@ -1,8 +1,10 @@
-package com.example.a3634project;
+package com.example.a3634project.Database;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.example.a3634project.DiaryEntry;
 
 import java.util.List;
 

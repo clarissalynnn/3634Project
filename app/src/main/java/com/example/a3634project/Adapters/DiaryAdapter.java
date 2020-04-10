@@ -1,4 +1,4 @@
-package com.example.a3634project.adapters;
+package com.example.a3634project.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

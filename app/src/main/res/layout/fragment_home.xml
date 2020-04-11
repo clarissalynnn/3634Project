@@ -49,4 +49,15 @@
         app:layout_constraintHeight_percent="0.8"
         android:background="@android:color/white"/>
 
+    <TextView
+        android:id="@+id/recipeRec"
+        android:layout_width="259dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Recipe recommendation/ Nutrition info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/greetingsTv" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

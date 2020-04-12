@@ -24,7 +24,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText edtLastName;
     private EditText edtEmail;
     private EditText edtPassword;
-    private TextView btCancel;
+    private TextView btLogin;
     private Button btSignUp;
 
     private UserDao userDao;
@@ -46,7 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
         edtLastName = findViewById(R.id.lastnameInput);
         edtEmail = findViewById(R.id.emailInput);
         edtPassword = findViewById(R.id.passwordInput);
-        btCancel = findViewById(R.id.btCancel);
+        btLogin = findViewById(R.id.btLogin);
         btSignUp = findViewById(R.id.btSignUp);
 
         userDao = Room.databaseBuilder(this, UserDatabase.class, "user-database.db")
@@ -54,7 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
                 .build()
                 .getUserDao();
 
-        btCancel.setOnClickListener(new View.OnClickListener() {
+        btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SignUpActivity.this, LoginActivity.class));

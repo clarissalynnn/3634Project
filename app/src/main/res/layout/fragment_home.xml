@@ -7,6 +7,15 @@
     android:orientation="vertical"
     tools:context=".Fragments.HomeFragment">
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="144dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@+id/greetingsTv"
+        tools:layout_editor_absoluteX="16dp" />
+
     <TextView
         android:id="@+id/greetingsTv"
         android:layout_width="wrap_content"
@@ -63,13 +72,13 @@
         android:id="@+id/recipeTitleTv"
         android:layout_width="293dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text=""
         android:textColor="#FF0000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipeRecTv" />
 
@@ -77,11 +86,11 @@
         android:id="@+id/foodJokeTv"
         android:layout_width="294dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="Food Joke"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipeTitleTv" />
 

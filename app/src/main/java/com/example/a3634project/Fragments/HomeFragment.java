@@ -50,10 +50,10 @@ public class HomeFragment extends Fragment {
                 .build();
 
         APIService service = retrofit.create(APIService.class);
-        Call<RecipeResponse> call = service.getRecipe();
+       // Call<RecipeResponse> call = service.getRecipe();
         Call<JokeResponse> call2 = service.getFoodJoke();
 
-        call.enqueue(new Callback<RecipeResponse>() {
+        /*call.enqueue(new Callback<RecipeResponse>() {
             @Override
             public void onResponse(Call<RecipeResponse> call, Response<RecipeResponse> response) {
                 Log.d(TAG, "OnResponse: SUCCESS");
@@ -66,13 +66,16 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<RecipeResponse> call, Throwable t) {
                 Log.d(TAG, "onFailure: FAILURE IS " + t.getLocalizedMessage());
             }
-        });
+        });*/
 
-/*        call2.enqueue(new Callback<JokeResponse>() {
+        call2.enqueue(new Callback<JokeResponse>() {
             @Override
             public void onResponse(Call<JokeResponse> call, Response<JokeResponse> response) {
                 Log.d(TAG, "OnResponse: SUCCESS");
-                String foodJoke = response.body().getText();
+                String foodJoke="Hi Pat";
+             /*   if (response.body().getText()==null|response.body().getText().isEmpty()){
+                    foodJoke = "Hi Pat";
+                } else {foodJoke = response.body().getText();}*/
                 TextView joke = getActivity().findViewById(R.id.foodJokeTv);
                 joke.setText(foodJoke);
             }
@@ -81,7 +84,7 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<JokeResponse> call, Throwable t) {
                 Log.d(TAG, "onFailure: FAILURE IS " + t.getLocalizedMessage());
             }
-        });*/
+        });
     }
 
     @Override

@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -28,11 +30,29 @@ public class LoginActivity extends AppCompatActivity {
 
     private UserDao userDao;
     private ProgressDialog progressDialog;
+    private SharedPreferences sharedpreferences;
+    public static final String MyPREFERENCES = "myprefs";
+    public static final  String value = "key";
+    private String login;
+    private User user_autologin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    /*    sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+         login = sharedpreferences.getString(value, "pat");
+        if (login != null) {
+            //put your code if user is logged. For example, go to another activity
+            System.out.println("hihihih1");
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            finish();
+            //return;
+        }*/
+        System.out.println("hihihih2");
         setContentView(R.layout.activity_login);
+
+
+
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -51,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.emailInput);
         edtPassword = findViewById(R.id.passwordInput);
 
+
         btSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +88,9 @@ public class LoginActivity extends AppCompatActivity {
                         public void run() {
                             User user = userDao.getUser(edtEmail.getText().toString(), edtPassword.getText().toString());
                             if(user!=null){
+                                SharedPreferences.Editor editor = sharedpreferences.edit();
+                                editor.putString(value, edtEmail.getText().toString());
+                                editor.apply();
                                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                                 i.putExtra("User", user);
                                 startActivity(i);

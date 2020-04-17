@@ -1,5 +1,6 @@
 package com.example.a3634project.Fragments;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -21,6 +22,7 @@ import com.example.a3634project.SpoonacularAPI.JokeResponse;
 import com.example.a3634project.SpoonacularAPI.RecipeResponse;
 import com.example.a3634project.SpoonacularAPI.APIService;
 
+import java.io.IOException;
 import java.util.Calendar;
 
 import retrofit2.Call;
@@ -43,48 +45,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        APIService service = retrofit.create(APIService.class);
-       // Call<RecipeResponse> call = service.getRecipe();
-        Call<JokeResponse> call2 = service.getFoodJoke();
-
-        /*call.enqueue(new Callback<RecipeResponse>() {
-            @Override
-            public void onResponse(Call<RecipeResponse> call, Response<RecipeResponse> response) {
-                Log.d(TAG, "OnResponse: SUCCESS");
-                String recipeTitle = response.body().getRecipes().get(0).getTitle();
-                TextView title = getActivity().findViewById(R.id.recipeTitleTv);
-                title.setText(recipeTitle);
-            }
-
-            @Override
-            public void onFailure(Call<RecipeResponse> call, Throwable t) {
-                Log.d(TAG, "onFailure: FAILURE IS " + t.getLocalizedMessage());
-            }
-        });*/
-
-        call2.enqueue(new Callback<JokeResponse>() {
-            @Override
-            public void onResponse(Call<JokeResponse> call, Response<JokeResponse> response) {
-                Log.d(TAG, "OnResponse: SUCCESS");
-                String foodJoke="Hi Pat";
-             /*   if (response.body().getText()==null|response.body().getText().isEmpty()){
-                    foodJoke = "Hi Pat";
-                } else {foodJoke = response.body().getText();}*/
-                TextView joke = getActivity().findViewById(R.id.foodJokeTv);
-                joke.setText(foodJoke);
-            }
-
-            @Override
-            public void onFailure(Call<JokeResponse> call, Throwable t) {
-                Log.d(TAG, "onFailure: FAILURE IS " + t.getLocalizedMessage());
-            }
-        });
+        new GetRecipeTask().execute();
     }
 
     @Override
@@ -108,10 +71,36 @@ public class HomeFragment extends Fragment {
             }
         };
 
-        mAdapter = new TopicAdapter(Topic.getTopics(), listener);
-        mRecyclerView.setAdapter(mAdapter);
-
         return v;
+    }
+
+    private class GetRecipeTask extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try{
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                APIService service = retrofit.create(APIService.class);
+                Call<RecipeResponse> recipeCall = service.getRecipe();
+
+                Response<RecipeResponse> recipeResponse = recipeCall.execute();
+                String recipe = recipeResponse.body().getRecipes().get(0).getTitle();
+                return recipe;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String recipe) {
+            TextView title = getActivity().findViewById(R.id.recipeTitleTv);
+            title.setText(recipe);
+        }
     }
 
     public String setGreetings(){

@@ -88,9 +88,9 @@ public class LoginActivity extends AppCompatActivity {
                         public void run() {
                             User user = userDao.getUser(edtEmail.getText().toString(), edtPassword.getText().toString());
                             if(user!=null){
-                                SharedPreferences.Editor editor = sharedpreferences.edit();
+                              /*  SharedPreferences.Editor editor = sharedpreferences.edit();
                                 editor.putString(value, edtEmail.getText().toString());
-                                editor.apply();
+                                editor.apply();*/
                                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                                 i.putExtra("User", user);
                                 startActivity(i);

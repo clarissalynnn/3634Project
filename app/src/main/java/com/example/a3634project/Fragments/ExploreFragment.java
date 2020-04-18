@@ -52,7 +52,7 @@ public class ExploreFragment extends Fragment {
             public void onClick(View view, int position) {
                 switch(position){
                     case 0:
-                        launchRecipeActivity();
+                        launchCuisineActivity();
                         break;
                     case 1:
                         launchIngredientActivity();
@@ -67,7 +67,7 @@ public class ExploreFragment extends Fragment {
         return v;
     }
 
-    private void launchRecipeActivity(){
+    private void launchCuisineActivity(){
         Intent intent = new Intent(getActivity(), RecipeActivity.class);
         startActivity(intent);
     }

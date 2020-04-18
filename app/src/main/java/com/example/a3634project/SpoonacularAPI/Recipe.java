@@ -3,6 +3,9 @@ package com.example.a3634project.SpoonacularAPI;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.a3634project.Models.Topic;
+import com.example.a3634project.R;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -90,6 +93,9 @@ public class Recipe implements Serializable
     @SerializedName("image")
     @Expose
     private String image;
+    @SerializedName("sampleImage")
+    @Expose
+    private int sampleImage;
     @SerializedName("imageType")
     @Expose
     private String imageType;
@@ -210,6 +216,11 @@ public class Recipe implements Serializable
         this.originalId = originalId;
     }
 
+    public Recipe(int sampleImage, String title) {
+        this.sampleImage = sampleImage;
+        this.title = title;
+    }
+
     public Boolean getVegetarian() {
         return vegetarian;
     }
@@ -247,6 +258,14 @@ public class Recipe implements Serializable
     public Recipe withGlutenFree(Boolean glutenFree) {
         this.glutenFree = glutenFree;
         return this;
+    }
+
+    public int getSampleImage() {
+        return sampleImage;
+    }
+
+    public void setSampleImage(int sampleImage) {
+        this.sampleImage = sampleImage;
     }
 
     public Boolean getDairyFree() {
@@ -689,6 +708,23 @@ public class Recipe implements Serializable
     public Recipe withOriginalId(Integer originalId) {
         this.originalId = originalId;
         return this;
+    }
+
+    public static ArrayList<Recipe> getRecipes() {
+        ArrayList<Recipe> recipe = new ArrayList<>();
+        recipe.add(new Recipe(R.drawable.recipe, "sample 1"));
+        recipe.add(new Recipe(R.drawable.recipe, "sample 2"));
+        recipe.add(new Recipe(R.drawable.recipe, "sample 3"));
+        recipe.add(new Recipe(R.drawable.recipe, "sample 4"));
+        recipe.add(new Recipe(R.drawable.recipe, "sample 5"));
+        recipe.add(new Recipe(R.drawable.recipe, "sample 6"));
+        recipe.add(new Recipe(R.drawable.recipe, "sample 7"));
+        recipe.add(new Recipe(R.drawable.recipe, "sample 8"));
+        recipe.add(new Recipe(R.drawable.recipe, "sample 9"));
+        recipe.add(new Recipe(R.drawable.recipe, "sample 10"));
+        recipe.add(new Recipe(R.drawable.recipe, "sample 11"));
+        recipe.add(new Recipe(R.drawable.recipe, "sample 12"));
+        return recipe;
     }
 
 }

@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
 
-        new GetRecipeTask().execute();
+        //new GetRecipeTask().execute();
     }
 
     @Override

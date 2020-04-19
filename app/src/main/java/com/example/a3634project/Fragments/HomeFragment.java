@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.a3634project.Adapters.TopicAdapter;
@@ -21,6 +22,7 @@ import com.example.a3634project.Models.User;
 import com.example.a3634project.SpoonacularAPI.JokeResponse;
 import com.example.a3634project.SpoonacularAPI.RecipeResponse;
 import com.example.a3634project.SpoonacularAPI.APIService;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -56,6 +58,10 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
+        ImageView imageView = v.findViewById(R.id.sampleIv);
+        String imageUrl = "https://spoonacular.com/recipeImages/vegan-breakfast-casserole-1081198.jpg";
+        Picasso.get().load(imageUrl).into(imageView);
+
         user = (User) getActivity().getIntent().getSerializableExtra("User");
         mRecyclerView = v.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -85,7 +91,7 @@ public class HomeFragment extends Fragment {
                         .build();
 
                 APIService service = retrofit.create(APIService.class);
-                Call<RecipeResponse> recipeCall = service.getRecipe();
+                Call<RecipeResponse> recipeCall = service.getRandomRecipe();
 
                 Response<RecipeResponse> recipeResponse = recipeCall.execute();
                 String recipe = recipeResponse.body().getRecipes().get(0).getTitle();

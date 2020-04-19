@@ -99,6 +99,9 @@ public class Recipe implements Serializable
     @SerializedName("imageType")
     @Expose
     private String imageType;
+    @SerializedName("imageUrls")
+    @Expose
+    private List<String> imageUrls = new ArrayList<String>();
     @SerializedName("summary")
     @Expose
     private String summary;
@@ -175,6 +178,7 @@ public class Recipe implements Serializable
      * @param sourceName
      * @param originalId
      */
+
     public Recipe(Boolean vegetarian, Boolean vegan, Boolean glutenFree, Boolean dairyFree, Boolean veryHealthy, Boolean cheap, Boolean veryPopular, Boolean sustainable, Integer weightWatcherSmartPoints, String gaps, Boolean lowFodmap, String sourceUrl, String spoonacularSourceUrl, Integer aggregateLikes, Integer spoonacularScore, Integer healthScore, String creditsText, String license, String sourceName, Double pricePerServing, List<ExtendedIngredient> extendedIngredients, Integer id, String title, String author, Integer readyInMinutes, Integer servings, String image, String imageType, String summary, List<Object> cuisines, List<String> dishTypes, List<Object> diets, List<Object> occasions, WinePairing winePairing, String instructions, List<AnalyzedInstruction> analyzedInstructions, Integer originalId) {
         super();
         this.vegetarian = vegetarian;
@@ -216,9 +220,19 @@ public class Recipe implements Serializable
         this.originalId = originalId;
     }
 
-    public Recipe(int sampleImage, String title) {
-        this.sampleImage = sampleImage;
+    public Recipe(String image, String title) {
+        this.image = image;
         this.title = title;
+    }
+
+    public Recipe(Integer id, String title, Integer readyInMinutes, Integer servings, String image, List<String> imageUrls) {
+        super();
+        this.id = id;
+        this.title = title;
+        this.readyInMinutes = readyInMinutes;
+        this.servings = servings;
+        this.image = image;
+        this.imageUrls = imageUrls;
     }
 
     public Boolean getVegetarian() {
@@ -593,6 +607,19 @@ public class Recipe implements Serializable
         return this;
     }
 
+    public List<String> getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
+    }
+
+    public Recipe withImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
+        return this;
+    }
+
     public String getSummary() {
         return summary;
     }
@@ -710,12 +737,15 @@ public class Recipe implements Serializable
         return this;
     }
 
-    public static ArrayList<Recipe> getRecipes() {
+    /*public static ArrayList<Recipe> getRecipes() {
         ArrayList<Recipe> recipe = new ArrayList<>();
-        recipe.add(new Recipe(R.drawable.recipe, "sample 1"));
-        recipe.add(new Recipe(R.drawable.recipe, "sample 2"));
-        recipe.add(new Recipe(R.drawable.recipe, "sample 3"));
-        recipe.add(new Recipe(R.drawable.recipe, "sample 4"));
+        recipe.add(new Recipe("https://spoonacular.com/recipeImages/Pumpkin-Spice-Breakfast-Shake-495020.jpg", "sample 1"));
+        recipe.add(new Recipe("https://spoonacular.com/recipeImages/quick-breakfast-taco-694990.jpg", "sample 2"));
+        recipe.add(new Recipe("https://spoonacular.com/recipeImages/Healthy-Gluten-Free-Breakfast-Sandwich-+-a-Yoga-Challenge-505163.jpg", "sample 3"));
+        recipe.add(new Recipe("https://spoonacular.com/recipeImages/Strawberry-Sunrise-Breakfast-Smoothie-483733.jpg", "sample 1"));
+        recipe.add(new Recipe("https://spoonacular.com/recipeImages/My-Favorite-Breakfast-Smoothie-{a-k-a--Super-Food-Smoothie}-569542.jpg", "sample 2"));
+        recipe.add(new Recipe("https://spoonacular.com/recipeImages/quinoa-breakfast-tacos-with-kale-+-butternut-squash-720583.jpg", "sample 3"));
+        /*recipe.add(new Recipe(R.drawable.recipe, "sample 4"));
         recipe.add(new Recipe(R.drawable.recipe, "sample 5"));
         recipe.add(new Recipe(R.drawable.recipe, "sample 6"));
         recipe.add(new Recipe(R.drawable.recipe, "sample 7"));
@@ -725,6 +755,6 @@ public class Recipe implements Serializable
         recipe.add(new Recipe(R.drawable.recipe, "sample 11"));
         recipe.add(new Recipe(R.drawable.recipe, "sample 12"));
         return recipe;
-    }
+    }*/
 
 }

@@ -12,18 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.a3634project.R;
 import com.example.a3634project.SpoonacularAPI.Recipe;
+import com.example.a3634project.SpoonacularAPI.Result;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
-    private ArrayList<Recipe> recipeList;
+    private List<Result> recipeList;
     private RecyclerViewClickListener mListener;
 
     public interface RecyclerViewClickListener {
         void onClick(View view, int position);
     }
 
-    public RecipeAdapter(ArrayList<Recipe> recipeList, RecyclerViewClickListener listener){
+    public RecipeAdapter(ArrayList<Result> recipeList, RecyclerViewClickListener listener){
         this.recipeList = recipeList;
         this.mListener = listener;
     }
@@ -58,8 +61,10 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Recipe recipe = recipeList.get(position);
-        holder.mImage.setImageResource(recipe.getSampleImage());
+        Result recipe = recipeList.get(position);
+        String imageUrl = recipe.getImage();
+        Picasso.get().load("https://spoonacular.com/recipeImages/" + imageUrl).into(holder.mImage);
+        //holder.mImage.setImageResource(recipe.getSampleImage());
         holder.mName.setText(recipe.getTitle());
     }
 
@@ -67,4 +72,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     public int getItemCount() {
         return recipeList.size();
     }
+
+    public void setRecipes(List<Result> recipes) {
+        recipeList.clear();
+        recipeList.addAll(recipes);
+        notifyDataSetChanged();
+    }
+
 }

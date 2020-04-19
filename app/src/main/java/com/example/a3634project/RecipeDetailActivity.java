@@ -22,7 +22,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int position = intent.getIntExtra(RecipeActivity.EXTRA_MESSAGE, 0);
 
-        mRecipe = Recipe.getRecipes().get(position);
-        mTitle.setText(mRecipe.getTitle());
+        /*mRecipe = Recipe.getRecipes().get(position);
+        mTitle.setText(mRecipe.getTitle());*/
     }
 }

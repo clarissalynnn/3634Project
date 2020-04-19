@@ -30,8 +30,8 @@ public class Topic {
 
     public static ArrayList<Topic> getTopics() {
         ArrayList<Topic> topic = new ArrayList<>();
-        topic.add(new Topic(R.drawable.recipe,"Recipes", "Explore "));
-        topic.add(new Topic(R.drawable.ingredient,"Ingredients", "some description for ingredient"));
+        topic.add(new Topic(R.drawable.recipe,"Recipes", "Explore 1,000+ recipes across different cuisines."));
+        topic.add(new Topic(R.drawable.ingredient,"Ingredients", "Explore nutrition facts of variety of ingredients."));
         //topic.add(new Topic("Articles"));
         //topic.add(new Topic("Food Trivia"));
         return topic;

@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +16,7 @@ import android.widget.TextView;
 
 import com.example.a3634project.Adapters.TopicAdapter;
 import com.example.a3634project.R;
-import com.example.a3634project.Models.Topic;
 import com.example.a3634project.Models.User;
-import com.example.a3634project.SpoonacularAPI.JokeResponse;
-import com.example.a3634project.SpoonacularAPI.RecipeResponse;
 import com.example.a3634project.SpoonacularAPI.APIService;
 import com.squareup.picasso.Picasso;
 
@@ -28,7 +24,6 @@ import java.io.IOException;
 import java.util.Calendar;
 
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -58,10 +53,6 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-        ImageView imageView = v.findViewById(R.id.sampleIv);
-        String imageUrl = "https://spoonacular.com/recipeImages/vegan-breakfast-casserole-1081198.jpg";
-        Picasso.get().load(imageUrl).into(imageView);
-
         user = (User) getActivity().getIntent().getSerializableExtra("User");
         mRecyclerView = v.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -80,7 +71,7 @@ public class HomeFragment extends Fragment {
         return v;
     }
 
-    private class GetRecipeTask extends AsyncTask<Void, Void, String> {
+/*    private class GetRecipeTask extends AsyncTask<Void, Void, String> {
 
         @Override
         protected String doInBackground(Void... voids) {
@@ -107,7 +98,7 @@ public class HomeFragment extends Fragment {
             TextView title = getActivity().findViewById(R.id.recipeTitleTv);
             title.setText(recipe);
         }
-    }
+    }*/
 
     public String setGreetings(){
         Calendar c = Calendar.getInstance();

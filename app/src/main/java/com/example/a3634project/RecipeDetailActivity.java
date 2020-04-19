@@ -6,10 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.a3634project.SpoonacularAPI.Recipe;
-
 public class RecipeDetailActivity extends AppCompatActivity {
-    private Recipe mRecipe;
     private TextView mTitle;
 
     @Override

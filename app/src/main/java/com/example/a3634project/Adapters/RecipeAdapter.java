@@ -1,6 +1,5 @@
 package com.example.a3634project.Adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,21 +11,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.a3634project.R;
 import com.example.a3634project.SpoonacularAPI.Recipe;
-import com.example.a3634project.SpoonacularAPI.Result;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
-    private List<Result> recipeList;
+    private List<Recipe> recipeList;
     private RecyclerViewClickListener mListener;
 
     public interface RecyclerViewClickListener {
         void onClick(View view, int position);
     }
 
-    public RecipeAdapter(ArrayList<Result> recipeList, RecyclerViewClickListener listener){
+    public RecipeAdapter(ArrayList<Recipe> recipeList, RecyclerViewClickListener listener){
         this.recipeList = recipeList;
         this.mListener = listener;
     }
@@ -61,7 +59,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Result recipe = recipeList.get(position);
+        Recipe recipe = recipeList.get(position);
         String imageUrl = recipe.getImage();
         Picasso.get().load("https://spoonacular.com/recipeImages/" + imageUrl).into(holder.mImage);
         //holder.mImage.setImageResource(recipe.getSampleImage());
@@ -73,7 +71,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         return recipeList.size();
     }
 
-    public void setRecipes(List<Result> recipes) {
+    public void setRecipes(List<Recipe> recipes) {
         recipeList.clear();
         recipeList.addAll(recipes);
         notifyDataSetChanged();

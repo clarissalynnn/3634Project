@@ -2,26 +2,22 @@ package com.example.a3634project;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.example.a3634project.Adapters.RecipeAdapter;
 import com.example.a3634project.SpoonacularAPI.APIService;
-import com.example.a3634project.SpoonacularAPI.Recipe;
 import com.example.a3634project.SpoonacularAPI.RecipeResponse;
-import com.example.a3634project.SpoonacularAPI.RecipeResponseOne;
-import com.example.a3634project.SpoonacularAPI.Result;
+import com.example.a3634project.SpoonacularAPI.Recipe;
 
 import java.io.IOException;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,17 +26,24 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RecipeActivity extends AppCompatActivity {
-    private Recipe mRecipe;
+public class RecipeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private RecyclerView mRecyclerView;
     private RecipeAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private Spinner mSpinner;
+    private ArrayAdapter<CharSequence> mAdapter1;
     public static final String EXTRA_MESSAGE = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+
+        mSpinner = findViewById(R.id.spinner);
+        mAdapter1 = ArrayAdapter.createFromResource(this, R.array.recipeCuisine, android.R.layout.simple_spinner_item);
+        mAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(mAdapter1);
+        mSpinner.setOnItemSelectedListener(this);
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -54,10 +57,10 @@ public class RecipeActivity extends AppCompatActivity {
             }
         };
 
-        mAdapter = new RecipeAdapter(new ArrayList<Result>(), listener);
+        mAdapter = new RecipeAdapter(new ArrayList<Recipe>(), listener);
         mRecyclerView.setAdapter(mAdapter);
 
-        new GetRecipeTask().execute();
+        //new GetRecipeTask().execute();
     }
 
     private void launchRecipeDetailActivity(int position){
@@ -66,10 +69,22 @@ public class RecipeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private class GetRecipeTask extends AsyncTask<Void, Void, List<Result>> {
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        new GetRecipeTask().execute(text);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    private class GetRecipeTask extends AsyncTask<String, Void, List<Recipe>> {
 
         @Override
-        protected List<Result> doInBackground(Void... voids) {
+        protected List<Recipe> doInBackground(String... params) {
+            String cuisine = params[0];
             try{
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
@@ -77,12 +92,9 @@ public class RecipeActivity extends AppCompatActivity {
                         .build();
 
                 APIService service = retrofit.create(APIService.class);
-                Call<RecipeResponseOne> responseOneCall = service.getRecipe("100", "lunch");
-                //Call<RecipeResponse> recipeCall = service.getRecipe("20","breakfast");
-                //Call<RecipeResponse> recipeCall = service.getRandomRecipe();
-
-                Response<RecipeResponseOne> recipeResponse = responseOneCall.execute();
-                List<Result> recipeList = recipeResponse.body().getResults();
+                Call<RecipeResponse> responseOneCall = service.getRecipe("100", cuisine);
+                Response<RecipeResponse> recipeResponse = responseOneCall.execute();
+                List<Recipe> recipeList = recipeResponse.body().getRecipes();
                 return recipeList;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -91,7 +103,7 @@ public class RecipeActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(List<Result> recipeList) {
+        protected void onPostExecute(List<Recipe> recipeList) {
             mAdapter.setRecipes(recipeList);
         }
 

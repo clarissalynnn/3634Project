@@ -9,12 +9,9 @@ import com.google.gson.annotations.SerializedName;
 public class RecipeResponse implements Serializable
 {
 
-    @SerializedName("recipes")
-    @Expose
-    private List<Recipe> recipes = new ArrayList<Recipe>();
     @SerializedName("results")
     @Expose
-    private List<Recipe> results = new ArrayList<Recipe>();
+    private List<Recipe> recipes = new ArrayList<Recipe>();
     @SerializedName("baseUri")
     @Expose
     private String baseUri;
@@ -32,11 +29,11 @@ public class RecipeResponse implements Serializable
     private Integer processingTimeMs;
     @SerializedName("expires")
     @Expose
-    private Integer expires;
+    private Double expires;
     @SerializedName("isStale")
     @Expose
     private Boolean isStale;
-    private final static long serialVersionUID = 1304671972625469152L;
+    private final static long serialVersionUID = -3922612309438874757L;
 
     /**
      * No args constructor for use in serialization
@@ -56,7 +53,7 @@ public class RecipeResponse implements Serializable
      * @param isStale
      * @param recipes
      */
-    public RecipeResponse(List<Recipe> recipes, String baseUri, Integer offset, Integer number, Integer totalResults, Integer processingTimeMs, Integer expires, Boolean isStale) {
+    public RecipeResponse(List<Recipe> recipes, String baseUri, Integer offset, Integer number, Integer totalResults, Integer processingTimeMs, Double expires, Boolean isStale) {
         super();
         this.recipes = recipes;
         this.baseUri = baseUri;
@@ -68,12 +65,16 @@ public class RecipeResponse implements Serializable
         this.isStale = isStale;
     }
 
-    public void setResults(List<Recipe> results) {
-        this.results = results;
+    public List<Recipe> getRecipes() {
+        return recipes;
     }
 
-    public RecipeResponse withResults(List<Recipe> results) {
-        this.results = results;
+    public void setRecipes(List<Recipe> recipes) {
+        this.recipes = recipes;
+    }
+
+    public RecipeResponse withResults(List<Recipe> recipes) {
+        this.recipes = recipes;
         return this;
     }
 
@@ -142,15 +143,15 @@ public class RecipeResponse implements Serializable
         return this;
     }
 
-    public Integer getExpires() {
+    public Double getExpires() {
         return expires;
     }
 
-    public void setExpires(Integer expires) {
+    public void setExpires(Double expires) {
         this.expires = expires;
     }
 
-    public RecipeResponse withExpires(Integer expires) {
+    public RecipeResponse withExpires(Double expires) {
         this.expires = expires;
         return this;
     }
@@ -165,24 +166,6 @@ public class RecipeResponse implements Serializable
 
     public RecipeResponse withIsStale(Boolean isStale) {
         this.isStale = isStale;
-        return this;
-    }
-
-    public RecipeResponse(List<Recipe> recipes) {
-        super();
-        this.recipes = recipes;
-    }
-
-    public List<Recipe> getRecipes() {
-        return recipes;
-    }
-
-    public void setRecipes(List<Recipe> recipes) {
-        this.recipes = recipes;
-    }
-
-    public RecipeResponse withRecipes(List<Recipe> recipes) {
-        this.recipes = recipes;
         return this;
     }
 

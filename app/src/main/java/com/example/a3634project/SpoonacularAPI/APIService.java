@@ -14,8 +14,6 @@ public interface APIService {
     /*@Headers({"x-rapidapi-host: spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
            "x-rapidapi-key: dc4cf08b30mshec08ef4d4bf3400p1ebf39jsnc6890c2d1747"
    })*/
-    @GET("/recipes/random")
-    Call<RecipeResponse> getRandomRecipe();
 
     @GET("/food/jokes/random")
     Call<JokeResponse> getFoodJoke();
@@ -24,7 +22,7 @@ public interface APIService {
             "x-rapidapi-key: 779cdd11b5mshfa9dfb040cef863p158cadjsnd1db648573c8"
     })
     @GET("/recipes/search")
-    Call<RecipeResponseOne> getRecipe(
+    Call<RecipeResponse> getRecipe(
             @Query("number") String number,
             @Query("query") String query
     );

@@ -16,15 +16,6 @@
         app:layout_constraintTop_toBottomOf="@+id/greetingsTv"
         tools:layout_editor_absoluteX="16dp" />
 
-    <ImageView
-        android:id="@+id/sampleIv"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/greetingsTv"
         android:layout_width="wrap_content"

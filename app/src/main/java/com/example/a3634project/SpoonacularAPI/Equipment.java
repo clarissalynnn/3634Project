@@ -16,10 +16,7 @@ public class Equipment implements Serializable
     @SerializedName("image")
     @Expose
     private String image;
-    @SerializedName("temperature")
-    @Expose
-    private Temperature temperature;
-    private final static long serialVersionUID = 8523672130109610992L;
+    private final static long serialVersionUID = 4828496666571436801L;
 
     /**
      * No args constructor for use in serialization
@@ -32,15 +29,13 @@ public class Equipment implements Serializable
      *
      * @param image
      * @param name
-     * @param temperature
      * @param id
      */
-    public Equipment(Integer id, String name, String image, Temperature temperature) {
+    public Equipment(Integer id, String name, String image) {
         super();
         this.id = id;
         this.name = name;
         this.image = image;
-        this.temperature = temperature;
     }
 
     public Integer getId() {
@@ -79,19 +74,6 @@ public class Equipment implements Serializable
 
     public Equipment withImage(String image) {
         this.image = image;
-        return this;
-    }
-
-    public Temperature getTemperature() {
-        return temperature;
-    }
-
-    public void setTemperature(Temperature temperature) {
-        this.temperature = temperature;
-    }
-
-    public Equipment withTemperature(Temperature temperature) {
-        this.temperature = temperature;
         return this;
     }
 

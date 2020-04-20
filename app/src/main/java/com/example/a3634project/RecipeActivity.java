@@ -50,14 +50,14 @@ public class RecipeActivity extends AppCompatActivity implements AdapterView.OnI
         mLayoutManager = new GridLayoutManager(this, 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        RecipeAdapter.RecyclerViewClickListener listener = new RecipeAdapter.RecyclerViewClickListener() {
+        /*RecipeAdapter.RecyclerViewClickListener listener = new RecipeAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
                 launchRecipeDetailActivity(position);
             }
-        };
+        };*/
 
-        mAdapter = new RecipeAdapter(new ArrayList<Recipe>(), listener);
+        mAdapter = new RecipeAdapter(new ArrayList<Recipe>());
         mRecyclerView.setAdapter(mAdapter);
 
         //new GetRecipeTask().execute();
@@ -92,8 +92,8 @@ public class RecipeActivity extends AppCompatActivity implements AdapterView.OnI
                         .build();
 
                 APIService service = retrofit.create(APIService.class);
-                Call<RecipeResponse> responseOneCall = service.getRecipe("100", cuisine);
-                Response<RecipeResponse> recipeResponse = responseOneCall.execute();
+                Call<RecipeResponse> recipeCall = service.getRecipe("100", cuisine);
+                Response<RecipeResponse> recipeResponse = recipeCall.execute();
                 List<Recipe> recipeList = recipeResponse.body().getRecipes();
                 return recipeList;
             } catch (IOException e) {

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecipeDetailActivity"
-    android:background="@color/LavenderBlush">
+    android:background="@color/LavenderBlush"
+    tools:context=".RecipeDetailActivity">
 
     <TextView
         android:id="@+id/textView3"
@@ -22,13 +22,25 @@
 
     <TextView
         android:id="@+id/recipeTitleTv"
-        android:layout_width="wrap_content"
+        android:layout_width="291dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Recipe Name"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/recipeSummaryTv"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="152dp"
+        android:text="Recipe Summary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipeTitleTv" />
 </androidx.constraintlayout.widget.ConstraintLayout>

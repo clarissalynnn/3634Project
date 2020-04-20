@@ -3,6 +3,7 @@ package com.example.a3634project.SpoonacularAPI;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIService {
@@ -26,5 +27,11 @@ public interface APIService {
             @Query("number") String number,
             @Query("query") String query
     );
+
+    @Headers({"x-rapidapi-host: spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+            "x-rapidapi-key: 779cdd11b5mshfa9dfb040cef863p158cadjsnd1db648573c8"
+    })
+    @GET("/recipes/{id}/information")
+    Call<RecipeDetailResponse> getRecipeDetail(@Path("id") int id);
 
 }

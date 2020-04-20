@@ -1,5 +1,7 @@
 package com.example.a3634project.Adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.a3634project.R;
+import com.example.a3634project.RecipeDetailActivity;
 import com.example.a3634project.SpoonacularAPI.Recipe;
 import com.squareup.picasso.Picasso;
 
@@ -18,52 +21,38 @@ import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
     private List<Recipe> recipeList;
-    private RecyclerViewClickListener mListener;
 
-    public interface RecyclerViewClickListener {
-        void onClick(View view, int position);
-    }
 
-    public RecipeAdapter(ArrayList<Recipe> recipeList, RecyclerViewClickListener listener){
+    public RecipeAdapter(ArrayList<Recipe> recipeList){
         this.recipeList = recipeList;
-        this.mListener = listener;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView mImage;
         public TextView mName;
-        private RecyclerViewClickListener mListener;
 
-        public ViewHolder(@NonNull View itemView, RecyclerViewClickListener listener) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mListener = listener;
-            itemView.setOnClickListener(this);
             mImage = itemView.findViewById(R.id.recipeIv);
             mName = itemView.findViewById(R.id.recipeTitleTv);
-
         }
 
-        @Override
-        public void onClick(View v) {
-            mListener.onClick(v, getAdapterPosition());
-        }
     }
 
     @NonNull
     @Override
     public RecipeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_list, parent, false);
-        ViewHolder vh = new ViewHolder(v, mListener);
-        return vh;
+        return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Recipe recipe = recipeList.get(position);
-        String imageUrl = recipe.getImage();
-        Picasso.get().load("https://spoonacular.com/recipeImages/" + imageUrl).into(holder.mImage);
-        //holder.mImage.setImageResource(recipe.getSampleImage());
+        Picasso.get().load("https://spoonacular.com/recipeImages/" + recipe.getImage()).into(holder.mImage);
         holder.mName.setText(recipe.getTitle());
+        holder.itemView.setTag(recipe);
+        holder.itemView.setOnClickListener(mOnClickListener);
     }
 
     @Override
@@ -76,5 +65,16 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         recipeList.addAll(recipes);
         notifyDataSetChanged();
     }
+
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Recipe recipe = (Recipe) v.getTag();
+            Context context = v.getContext();
+            Intent intent = new Intent(context, RecipeDetailActivity.class);
+            intent.putExtra("RECIPE_ID", recipe.getId());
+            context.startActivity(intent);
+        }
+    };
 
 }

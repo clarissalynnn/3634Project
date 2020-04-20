@@ -17,14 +17,11 @@ public class Step implements Serializable
     private String step;
     @SerializedName("ingredients")
     @Expose
-    private List<Ingredient> ingredients = new ArrayList<Ingredient>();
+    private List<Object> ingredients = new ArrayList<Object>();
     @SerializedName("equipment")
     @Expose
     private List<Equipment> equipment = new ArrayList<Equipment>();
-    @SerializedName("length")
-    @Expose
-    private Length length;
-    private final static long serialVersionUID = 7399555464000021471L;
+    private final static long serialVersionUID = 3656893927037252015L;
 
     /**
      * No args constructor for use in serialization
@@ -36,18 +33,16 @@ public class Step implements Serializable
     /**
      *
      * @param number
-     * @param length
      * @param ingredients
      * @param equipment
      * @param step
      */
-    public Step(Integer number, String step, List<Ingredient> ingredients, List<Equipment> equipment, Length length) {
+    public Step(Integer number, String step, List<Object> ingredients, List<Equipment> equipment) {
         super();
         this.number = number;
         this.step = step;
         this.ingredients = ingredients;
         this.equipment = equipment;
-        this.length = length;
     }
 
     public Integer getNumber() {
@@ -76,15 +71,15 @@ public class Step implements Serializable
         return this;
     }
 
-    public List<Ingredient> getIngredients() {
+    public List<Object> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
+    public void setIngredients(List<Object> ingredients) {
         this.ingredients = ingredients;
     }
 
-    public Step withIngredients(List<Ingredient> ingredients) {
+    public Step withIngredients(List<Object> ingredients) {
         this.ingredients = ingredients;
         return this;
     }
@@ -99,19 +94,6 @@ public class Step implements Serializable
 
     public Step withEquipment(List<Equipment> equipment) {
         this.equipment = equipment;
-        return this;
-    }
-
-    public Length getLength() {
-        return length;
-    }
-
-    public void setLength(Length length) {
-        this.length = length;
-    }
-
-    public Step withLength(Length length) {
-        this.length = length;
         return this;
     }
 

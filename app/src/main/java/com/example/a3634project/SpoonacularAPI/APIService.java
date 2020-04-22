@@ -34,4 +34,27 @@ public interface APIService {
     @GET("/recipes/{id}/information")
     Call<RecipeDetailResponse> getRecipeDetail(@Path("id") int id);
 
+
+    @Headers({"x-rapidapi-host: spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+            "x-rapidapi-key: dc4cf08b30mshec08ef4d4bf3400p1ebf39jsnc6890c2d1747"
+    })
+    @GET("/food/ingredients/autocomplete")
+    Call<AutocompleteIngredientsResponse> getAutocompleteIngredientsSearch(
+            @Query("name") String name,
+            @Query("number") int number,
+            @Query("boolean") boolean boo
+
+    );
+
+    @Headers({"x-rapidapi-host: spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+            "x-rapidapi-key: dc4cf08b30mshec08ef4d4bf3400p1ebf39jsnc6890c2d1747"
+    })
+    @GET("/food/ingredients/{id}/information")
+    Call<IngredientsResponse> getFoodInformation(
+            @Query("id") int id,
+            @Query("amount") int amount,
+            @Query("measurement") String measurement
+            );
+
+
 }

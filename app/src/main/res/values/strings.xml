@@ -29,4 +29,14 @@
         <item>Thai</item>
         <item>Vietnamese</item>
     </string-array>
+    <string-array name="category_list">
+        <item>quart</item>
+        <item>g</item>
+        <item>fl oz</item>
+        <item>oz</item>
+        <item>teaspoon</item>
+        <item>cup</item>
+        <item>serving</item>
+        <item>tablespoon</item>
+    </string-array>
 </resources>

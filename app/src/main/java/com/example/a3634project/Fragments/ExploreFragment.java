@@ -20,6 +20,7 @@ import com.example.a3634project.NutritionTipsActivity;
 import com.example.a3634project.R;
 import com.example.a3634project.Models.Topic;
 import com.example.a3634project.RecipeActivity;
+import com.example.a3634project.SearchIngredientsData;
 
 
 /**
@@ -82,7 +83,7 @@ public class ExploreFragment extends Fragment {
     }
 
     private void launchIngredientActivity(){
-        Intent intent = new Intent(getActivity(), IngredientActivity.class);
+        Intent intent = new Intent(getActivity(), SearchIngredientsData.class);
         startActivity(intent);
     }
 

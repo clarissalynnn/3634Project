@@ -18,6 +18,9 @@
         <activity android:name=".RecipeDetailActivity" />
         <activity android:name=".IngredientActivity" />
         <activity android:name=".RecipeActivity" />
+        <activity android:name=".SearchIngredientsData" />
+        <activity android:name=".ShowIngredientData"/>
+
         <activity
             android:name=".LoginActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"

@@ -13,21 +13,13 @@
     <color name="LightSteelBlue">#B0C4DE</color>
     <color name="Black">#000000</color>
     <string-array name="category_list">
-        <item>Development</item>
-        <item>Animal</item>
-        <item>Career</item>
-        <item>Celebrity</item>
-        <item>Explicit</item>
-        <item>Fashion</item>
-        <item>Food</item>
-        <item>History</item>
-        <item>Money</item>
-        <item>Movie</item>
-        <item>Music</item>
-        <item>Political</item>
-        <item>Religion</item>
-        <item>Science</item>
-        <item>Sport</item>
-        <item>Travel</item>
+        <item>quart</item>
+        <item>g</item>
+        <item>fl oz</item>
+        <item>oz</item>
+        <item>teaspoon</item>
+        <item>cup</item>
+        <item>serving</item>
+        <item>tablespoon</item>
     </string-array>
 </resources>

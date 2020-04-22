@@ -16,15 +16,25 @@ import com.example.a3634project.SpoonacularAPI.Recipe;
 
 public class SearchIngredientsData extends AppCompatActivity {
     private String inputSearchIngName;
-    private int enterSearchIngAmt;
+    private String enterSearchIngAmt;
     private EditText amt;
     private String enterSearchIngMeasurement;
     private Button button;
+    private EditText foodName ;
+    private EditText foodAmt ;
+    private Spinner measurement ;
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            inputSearchIngName = foodName.getText().toString();
+            enterSearchIngAmt = foodAmt.getText().toString();
+            int amt = Integer.parseInt(enterSearchIngAmt);
+            enterSearchIngMeasurement = measurement.getSelectedItem().toString();
             launchIngredientsDataActivity(inputSearchIngName, enterSearchIngAmt, enterSearchIngMeasurement);
+            System.out.println(inputSearchIngName);
+            System.out.println(enterSearchIngAmt);
+            System.out.println(enterSearchIngMeasurement);
         }
     };
 
@@ -33,14 +43,11 @@ public class SearchIngredientsData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_ingredients_data);
 
-        inputSearchIngName= String.valueOf(findViewById(R.id.inputSearchIngNameTV));
-        amt = findViewById(R.id.enterSearchIngAmtTV);
-        String sAmt = amt.getText().toString();
-        if(!"".equals(sAmt)){
-            enterSearchIngAmt = Integer.parseInt(sAmt);
-        }
+        foodName = findViewById(R.id.inputSearchIngNameTV);
+         foodAmt = findViewById(R.id.enterSearchIngAmtTV);
+         measurement = findViewById(R.id.enterSearchIngMeasurement);
 
-        enterSearchIngMeasurement = String.valueOf(findViewById(R.id.enterSearchIngMeasurement));
+        System.out.println(inputSearchIngName + enterSearchIngMeasurement + enterSearchIngAmt);
         button = findViewById(R.id.searchIngButton);
         button.setOnClickListener(mOnClickListener);
 
@@ -48,7 +55,7 @@ public class SearchIngredientsData extends AppCompatActivity {
 
 
     }
-    private void launchIngredientsDataActivity(String name,int amount,  String measurement){
+    private void launchIngredientsDataActivity(String name,String amount,  String measurement){
         Intent intent = new Intent(this,ShowIngredientData.class);
         intent.putExtra("INGREDIENT_NAME", name);
         intent.putExtra("AMOUNT", amount);

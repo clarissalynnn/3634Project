@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.a3634project.Fragments.DiaryFragment;
+import com.example.a3634project.Fragments.QuizFragment;
 import com.example.a3634project.Fragments.ExploreFragment;
 import com.example.a3634project.Fragments.HomeFragment;
 import com.example.a3634project.Fragments.ProfileFragment;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new ExploreFragment();
                             break;
                         case R.id.nav_diary:
-                            selectedFragment = new DiaryFragment();
+                            selectedFragment = new QuizFragment();
                             break;
                         case R.id.nav_profile:
                             selectedFragment = new ProfileFragment();

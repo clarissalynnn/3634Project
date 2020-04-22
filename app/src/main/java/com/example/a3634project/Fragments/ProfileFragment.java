@@ -1,5 +1,6 @@
 package com.example.a3634project.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -8,10 +9,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.a3634project.LoginActivity;
 import com.example.a3634project.Models.User;
 import com.example.a3634project.R;
+import com.example.a3634project.RecipeActivity;
 
 
 /**
@@ -45,6 +49,17 @@ public class ProfileFragment extends Fragment {
         mName.setText(user.getFirst_name() + " " + user.getLast_name());
         mEmail.setText(user.getEmail());
 
+        Button mLogOut = v.findViewById(R.id.logOutBt);
+        mLogOut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
+
         return v;
     }
+
 }

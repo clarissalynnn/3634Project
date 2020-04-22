@@ -4,21 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/LightSteelBlue"
-    android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground"
-    tools:context=".RecipeActivity">
+    android:background="#BFDDC0"
+    tools:context=".NutritionTipsActivity">
 
     <TextView
         android:id="@+id/dietTypeTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Recipes"
+        android:text="Nutrition Tips"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,34 +26,14 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@android:color/white"
+        android:background="#C5C5C5"
         android:clipToPadding="false"
         android:padding="4dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.85"
+        app:layout_constraintHeight_percent="0.90"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <RelativeLayout
-        android:layout_width="352dp"
-        android:layout_height="30dp"
-        android:background="@color/White"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dietTypeTv">
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="352dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

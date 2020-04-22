@@ -12,7 +12,7 @@
     <color name="Navy">#000080</color>
     <color name="LightSteelBlue">#B0C4DE</color>
     <color name="Black">#000000</color>
-    
+
     <string-array name="recipeCuisine">
         <item>American</item>
         <item>Caribbean</item>

@@ -48,11 +48,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
             //return;
         }*/
-        System.out.println("hihihih2");
         setContentView(R.layout.activity_login);
-
-
-
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);

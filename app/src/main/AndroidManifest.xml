@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecipeDetailActivity"></activity>
+        <activity android:name=".HealthyDietDetailActivity"></activity>
+        <activity android:name=".HealthyDietActivity" />
+        <activity android:name=".NutritionTipsActivity" />
+        <activity android:name=".RecipeDetailActivity" />
         <activity android:name=".IngredientActivity" />
         <activity android:name=".RecipeActivity" />
         <activity

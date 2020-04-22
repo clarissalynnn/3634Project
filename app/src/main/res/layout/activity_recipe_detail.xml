@@ -9,8 +9,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -34,7 +35,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="#000000"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recipeImageIv" />
@@ -48,6 +49,7 @@
                 android:layout_marginTop="12dp"
                 android:text="Summary"
                 android:textColor="#000000"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
@@ -61,6 +63,7 @@
                 android:layout_marginTop="12dp"
                 android:text="Instruction"
                 android:textColor="#000000"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recipeSummaryTv" />
@@ -83,14 +86,14 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recipeImageIv" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="70dp"
                 android:layout_marginTop="12dp"
                 android:background="#D6D6D6"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +107,7 @@
                     android:layout_height="29dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/serving" />
@@ -113,20 +116,21 @@
                     android:id="@+id/timeIcon"
                     android:layout_width="22dp"
                     android:layout_height="23dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginRight="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/readyIn"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.51"
                     app:srcCompat="@drawable/clock" />
 
                 <ImageView
                     android:id="@+id/healthIcon"
                     android:layout_width="22dp"
                     android:layout_height="23dp"
-                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="12dp"
                     android:layout_marginRight="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/healthScore"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/healthy" />
@@ -137,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="12dp"
                     android:text="Serving(s)"
                     android:textSize="12sp"
                     app:layout_constraintStart_toEndOf="@+id/servingIcon"
@@ -147,7 +151,7 @@
                     android:id="@+id/readyIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="12dp"
                     android:text="Ready in (mins)"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -158,7 +162,7 @@
                     android:id="@+id/healthScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="28dp"
                     android:layout_marginRight="28dp"
                     android:text="Health Score"
@@ -170,8 +174,8 @@
                     android:id="@+id/servingTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="12sp"
+                    android:layout_marginBottom="12dp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/serving"
                     app:layout_constraintStart_toStartOf="@+id/serving" />
@@ -180,8 +184,8 @@
                     android:id="@+id/healthScoreTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="12sp"
+                    android:layout_marginBottom="12dp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/healthScore"
                     app:layout_constraintStart_toStartOf="@+id/healthScore" />
@@ -190,8 +194,8 @@
                     android:id="@+id/readyInTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="12sp"
+                    android:layout_marginBottom="12dp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -207,7 +211,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:textColor="#000000"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recipeSummary" />
@@ -222,11 +226,24 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:textColor="#000000"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recipeInstruction" />
+
+            <ImageButton
+                android:id="@+id/launchUrlBt"
+                android:layout_width="52dp"
+                android:layout_height="51dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="#FFFFFF"
+                android:tint="#000000"
+                app:layout_constraintBottom_toBottomOf="@+id/recipeImageIv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_open_in_browser_black_24dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

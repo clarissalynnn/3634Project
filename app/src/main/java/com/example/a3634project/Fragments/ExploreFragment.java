@@ -14,7 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.a3634project.Adapters.TopicAdapter;
+import com.example.a3634project.HealthyDietActivity;
 import com.example.a3634project.IngredientActivity;
+import com.example.a3634project.NutritionTipsActivity;
 import com.example.a3634project.R;
 import com.example.a3634project.Models.Topic;
 import com.example.a3634project.RecipeActivity;
@@ -58,6 +60,12 @@ public class ExploreFragment extends Fragment {
                     case 1:
                         launchIngredientActivity();
                         break;
+                    case 2:
+                        launchNutritionTipsActivity();
+                        break;
+                    case 3:
+                        launchHealthyDietActivity();
+                        break;
                 }
             }
         };
@@ -75,6 +83,16 @@ public class ExploreFragment extends Fragment {
 
     private void launchIngredientActivity(){
         Intent intent = new Intent(getActivity(), IngredientActivity.class);
+        startActivity(intent);
+    }
+
+    private void launchNutritionTipsActivity(){
+        Intent intent = new Intent(getActivity(), NutritionTipsActivity.class);
+        startActivity(intent);
+    }
+
+    private void launchHealthyDietActivity(){
+        Intent intent = new Intent(getActivity(), HealthyDietActivity.class);
         startActivity(intent);
     }
 }

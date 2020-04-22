@@ -22,6 +22,16 @@ import java.util.List;
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
     private List<Recipe> recipeList;
 
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Recipe recipe = (Recipe) v.getTag();
+            Context context = v.getContext();
+            Intent intent = new Intent(context, RecipeDetailActivity.class);
+            intent.putExtra("RECIPE_ID", recipe.getId());
+            context.startActivity(intent);
+        }
+    };
 
     public RecipeAdapter(ArrayList<Recipe> recipeList){
         this.recipeList = recipeList;
@@ -65,16 +75,5 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         recipeList.addAll(recipes);
         notifyDataSetChanged();
     }
-
-    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Recipe recipe = (Recipe) v.getTag();
-            Context context = v.getContext();
-            Intent intent = new Intent(context, RecipeDetailActivity.class);
-            intent.putExtra("RECIPE_ID", recipe.getId());
-            context.startActivity(intent);
-        }
-    };
 
 }

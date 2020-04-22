@@ -50,23 +50,9 @@ public class RecipeActivity extends AppCompatActivity implements AdapterView.OnI
         mLayoutManager = new GridLayoutManager(this, 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        /*RecipeAdapter.RecyclerViewClickListener listener = new RecipeAdapter.RecyclerViewClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                launchRecipeDetailActivity(position);
-            }
-        };*/
-
         mAdapter = new RecipeAdapter(new ArrayList<Recipe>());
         mRecyclerView.setAdapter(mAdapter);
 
-        //new GetRecipeTask().execute();
-    }
-
-    private void launchRecipeDetailActivity(int position){
-        Intent intent = new Intent(this, RecipeDetailActivity.class);
-        intent.putExtra(EXTRA_MESSAGE, position);
-        startActivity(intent);
     }
 
     @Override

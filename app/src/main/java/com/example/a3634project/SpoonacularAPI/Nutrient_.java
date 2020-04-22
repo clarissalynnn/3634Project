@@ -1,12 +1,10 @@
 package com.example.a3634project.SpoonacularAPI;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Ingredient implements Serializable
+public class Nutrient_ implements Serializable
 {
 
     @SerializedName("name")
@@ -18,16 +16,13 @@ public class Ingredient implements Serializable
     @SerializedName("unit")
     @Expose
     private String unit;
-    @SerializedName("nutrients")
-    @Expose
-    private List<Nutrient_> nutrients = new ArrayList<Nutrient_>();
-    private final static long serialVersionUID = -7011094086666806737L;
+    private final static long serialVersionUID = 62936616154057592L;
 
     /**
      * No args constructor for use in serialization
      *
      */
-    public Ingredient() {
+    public Nutrient_() {
     }
 
     /**
@@ -35,14 +30,12 @@ public class Ingredient implements Serializable
      * @param amount
      * @param unit
      * @param name
-     * @param nutrients
      */
-    public Ingredient(String name, Double amount, String unit, List<Nutrient_> nutrients) {
+    public Nutrient_(String name, Double amount, String unit) {
         super();
         this.name = name;
         this.amount = amount;
         this.unit = unit;
-        this.nutrients = nutrients;
     }
 
     public String getName() {
@@ -53,7 +46,7 @@ public class Ingredient implements Serializable
         this.name = name;
     }
 
-    public Ingredient withName(String name) {
+    public Nutrient_ withName(String name) {
         this.name = name;
         return this;
     }
@@ -66,7 +59,7 @@ public class Ingredient implements Serializable
         this.amount = amount;
     }
 
-    public Ingredient withAmount(Double amount) {
+    public Nutrient_ withAmount(Double amount) {
         this.amount = amount;
         return this;
     }
@@ -79,21 +72,8 @@ public class Ingredient implements Serializable
         this.unit = unit;
     }
 
-    public Ingredient withUnit(String unit) {
+    public Nutrient_ withUnit(String unit) {
         this.unit = unit;
-        return this;
-    }
-
-    public List<Nutrient_> getNutrients() {
-        return nutrients;
-    }
-
-    public void setNutrients(List<Nutrient_> nutrients) {
-        this.nutrients = nutrients;
-    }
-
-    public Ingredient withNutrients(List<Nutrient_> nutrients) {
-        this.nutrients = nutrients;
         return this;
     }
 

@@ -12,10 +12,16 @@ public class Nutrition implements Serializable
     @SerializedName("nutrients")
     @Expose
     private List<Nutrient> nutrients = new ArrayList<Nutrient>();
+    @SerializedName("ingredients")
+    @Expose
+    private List<Ingredient> ingredients = new ArrayList<Ingredient>();
     @SerializedName("caloricBreakdown")
     @Expose
     private CaloricBreakdown caloricBreakdown;
-    private final static long serialVersionUID = -5123728363369645921L;
+    @SerializedName("weightPerServing")
+    @Expose
+    private WeightPerServing weightPerServing;
+    private final static long serialVersionUID = 2351920673504570002L;
 
     /**
      * No args constructor for use in serialization
@@ -27,12 +33,16 @@ public class Nutrition implements Serializable
     /**
      *
      * @param caloricBreakdown
+     * @param weightPerServing
+     * @param ingredients
      * @param nutrients
      */
-    public Nutrition(List<Nutrient> nutrients, CaloricBreakdown caloricBreakdown) {
+    public Nutrition(List<Nutrient> nutrients, List<Ingredient> ingredients, CaloricBreakdown caloricBreakdown, WeightPerServing weightPerServing) {
         super();
         this.nutrients = nutrients;
+        this.ingredients = ingredients;
         this.caloricBreakdown = caloricBreakdown;
+        this.weightPerServing = weightPerServing;
     }
 
     public List<Nutrient> getNutrients() {
@@ -48,6 +58,19 @@ public class Nutrition implements Serializable
         return this;
     }
 
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public Nutrition withIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+        return this;
+    }
+
     public CaloricBreakdown getCaloricBreakdown() {
         return caloricBreakdown;
     }
@@ -58,6 +81,19 @@ public class Nutrition implements Serializable
 
     public Nutrition withCaloricBreakdown(CaloricBreakdown caloricBreakdown) {
         this.caloricBreakdown = caloricBreakdown;
+        return this;
+    }
+
+    public WeightPerServing getWeightPerServing() {
+        return weightPerServing;
+    }
+
+    public void setWeightPerServing(WeightPerServing weightPerServing) {
+        this.weightPerServing = weightPerServing;
+    }
+
+    public Nutrition withWeightPerServing(WeightPerServing weightPerServing) {
+        this.weightPerServing = weightPerServing;
         return this;
     }
 

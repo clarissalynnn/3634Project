@@ -8,25 +8,22 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.a3634project.Adapters.TopicAdapter;
 import com.example.a3634project.R;
-import com.example.a3634project.Models.Topic;
 import com.example.a3634project.Models.User;
-import com.example.a3634project.SpoonacularAPI.JokeResponse;
-import com.example.a3634project.SpoonacularAPI.RecipeResponse;
 import com.example.a3634project.SpoonacularAPI.APIService;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.Calendar;
 
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -74,7 +71,7 @@ public class HomeFragment extends Fragment {
         return v;
     }
 
-    private class GetRecipeTask extends AsyncTask<Void, Void, String> {
+/*    private class GetRecipeTask extends AsyncTask<Void, Void, String> {
 
         @Override
         protected String doInBackground(Void... voids) {
@@ -85,7 +82,7 @@ public class HomeFragment extends Fragment {
                         .build();
 
                 APIService service = retrofit.create(APIService.class);
-                Call<RecipeResponse> recipeCall = service.getRecipe();
+                Call<RecipeResponse> recipeCall = service.getRandomRecipe();
 
                 Response<RecipeResponse> recipeResponse = recipeCall.execute();
                 String recipe = recipeResponse.body().getRecipes().get(0).getTitle();
@@ -101,7 +98,7 @@ public class HomeFragment extends Fragment {
             TextView title = getActivity().findViewById(R.id.recipeTitleTv);
             title.setText(recipe);
         }
-    }
+    }*/
 
     public String setGreetings(){
         Calendar c = Calendar.getInstance();

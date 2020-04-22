@@ -19,7 +19,7 @@ public class Nutrient implements Serializable
     @SerializedName("percentOfDailyNeeds")
     @Expose
     private Double percentOfDailyNeeds;
-    private final static long serialVersionUID = 1510160640255262724L;
+    private final static long serialVersionUID = -2941619287256598439L;
 
     /**
      * No args constructor for use in serialization

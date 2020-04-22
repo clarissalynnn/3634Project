@@ -16,7 +16,7 @@ public class CaloricBreakdown implements Serializable
     @SerializedName("percentCarbs")
     @Expose
     private Double percentCarbs;
-    private final static long serialVersionUID = 3817502935730196572L;
+    private final static long serialVersionUID = -1919928212456514225L;
 
     /**
      * No args constructor for use in serialization

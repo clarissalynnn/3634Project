@@ -123,9 +123,9 @@ public class ShowIngredientData extends AppCompatActivity {
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 APIService service = retrofit.create(APIService.class);
-                Call<AutocompleteIngredientsResponse> ingredientsResponseCall = service.getAutocompleteIngredientsSearch("Pineapple",1,true);
-                Response<AutocompleteIngredientsResponse> ingredientsResponse = ingredientsResponseCall.execute();
-                foodID = ingredientsResponse.body().getId();
+                Call<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponseCall = service.getAutocompleteIngredientsSearch("Pineapple",1,true);
+                Response<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponse = ingredientsResponseCall.execute();
+                foodID = ingredientsResponse.body().get(0).getId();
                 String foodIDString = String.valueOf(foodID);
                 System.out.println("JOOOOOOOOOOOOOOO"+ foodIDString);
                 return foodIDString;
@@ -166,10 +166,5 @@ public class ShowIngredientData extends AppCompatActivity {
             return null;
         }
 
-        @Override
-        protected void onPostExecute(String recipe) {
-            TextView title = findViewById(R.id.recipeTitleTv);
-            title.setText(recipe);
-        }
     }
 }

@@ -1,5 +1,7 @@
 package com.example.a3634project.SpoonacularAPI;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -39,10 +41,10 @@ public interface APIService {
             "x-rapidapi-key: dc4cf08b30mshec08ef4d4bf3400p1ebf39jsnc6890c2d1747"
     })
     @GET("/food/ingredients/autocomplete")
-    Call<AutocompleteIngredientsResponse> getAutocompleteIngredientsSearch(
-            @Query("name") String name,
+    Call<ArrayList<AutocompleteIngredientsResponse>> getAutocompleteIngredientsSearch(
+            @Query("query") String name,
             @Query("number") int number,
-            @Query("boolean") boolean boo
+            @Query("metaInformation") boolean boo
 
     );
 
@@ -51,10 +53,9 @@ public interface APIService {
     })
     @GET("/food/ingredients/{id}/information")
     Call<IngredientsResponse> getFoodInformation(
-            @Query("id") int id,
+            @Path("id") int id,
             @Query("amount") int amount,
-            @Query("measurement") String measurement
+            @Query("unit") String measurement
             );
-
 
 }

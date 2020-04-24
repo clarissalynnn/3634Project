@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/fruitImage"
+            android:layout_width="240dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/fruitsName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fruitImage"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textAlignment="center" />
+
+        <CheckBox
+            android:id="@+id/fruitsCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_below="@id/fruitsName"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

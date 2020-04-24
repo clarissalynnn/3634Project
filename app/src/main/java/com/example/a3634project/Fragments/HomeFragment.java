@@ -1,10 +1,12 @@
 package com.example.a3634project.Fragments;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,10 +16,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.a3634project.Adapters.HomeAdapter;
 import com.example.a3634project.Adapters.TopicAdapter;
 import com.example.a3634project.R;
 import com.example.a3634project.Models.User;
 import com.example.a3634project.SpoonacularAPI.APIService;
+import com.example.a3634project.add_food;
+import com.example.a3634project.add_fruits;
+import com.example.a3634project.add_vitamins;
+import com.example.a3634project.add_water;
+import com.example.a3634project.homeListItem;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -34,6 +42,11 @@ public class HomeFragment extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private User user;
     private String TAG;
+    //private TextView mGreetings;
+    private TextView mRecipeRec;
+    private TextView mRecipeTitle;
+    private TextView mFoodJoke;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -54,22 +67,64 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         user = (User) getActivity().getIntent().getSerializableExtra("User");
-        mRecyclerView = v.findViewById(R.id.recyclerView);
+        mRecyclerView = v.findViewById(R.id.homeRecyclerView);
         mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(getActivity());
+        mLayoutManager = new GridLayoutManager(getActivity(), 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
         TextView greetings = v.findViewById(R.id.greetingsTv);
         greetings.setText(setGreetings() + " " + user.getFirst_name() + "!");
 
-        TopicAdapter.RecyclerViewClickListener listener = new TopicAdapter.RecyclerViewClickListener() {
+        HomeAdapter.RecyclerViewClickListener listener = new HomeAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
+                switch (position) {
+                    case 0:
+                    launchAddWaterActivity();
+                    break;
 
+                    case 1:
+                        launchAddVitaminsActivity();
+                        break;
+
+                    case 2:
+                        launchAddFruitsActivity();
+                        break;
+
+                    case 3:
+                        launchAddFoodActivity();
+                        break;
+                }
             }
-        };
 
+
+        };
+        mAdapter = new HomeAdapter(homeListItem.getList(), listener);
+        mRecyclerView.setAdapter(mAdapter);
         return v;
+
     }
+
+    private void launchAddWaterActivity(){
+    Intent intent = new Intent(getActivity(), add_water.class);
+    startActivity(intent);
+}
+
+private void launchAddVitaminsActivity(){
+        Intent intent = new Intent(getActivity(), add_vitamins.class);
+        startActivity(intent);
+}
+
+private void launchAddFruitsActivity(){
+        Intent intent = new Intent(getActivity(), add_fruits.class);
+        startActivity(intent);
+}
+
+private void launchAddFoodActivity(){
+        Intent intent = new Intent(getActivity(), add_food.class);
+        startActivity(intent);
+}
+
+
 
 /*    private class GetRecipeTask extends AsyncTask<Void, Void, String> {
 
@@ -100,18 +155,19 @@ public class HomeFragment extends Fragment {
         }
     }*/
 
-    public String setGreetings(){
+    public String setGreetings() {
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
         String greetings = "";
-        if(timeOfDay >= 0 && timeOfDay < 12){
+        if (timeOfDay >= 0 && timeOfDay < 12) {
             greetings = "Good Morning";
-        } else if(timeOfDay >= 12 && timeOfDay < 16){
+        } else if (timeOfDay >= 12 && timeOfDay < 16) {
             greetings = "Good Afternoon";
-        } else if(timeOfDay >= 16 && timeOfDay < 24){
+        } else if (timeOfDay >= 16 && timeOfDay < 24) {
             greetings = "Good Evening";
         }
         return greetings;
     }
+
 }
 

@@ -1,11 +1,13 @@
 package com.example.a3634project.Fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ import com.example.a3634project.RecipeActivity;
  */
 public class ProfileFragment extends Fragment {
     private User user;
+    Button mLogOut;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -32,7 +35,6 @@ public class ProfileFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-
         //new GetRecipeTask().execute();
     }
 
@@ -49,14 +51,11 @@ public class ProfileFragment extends Fragment {
         mName.setText(user.getFirst_name() + " " + user.getLast_name());
         mEmail.setText(user.getEmail());
 
-        Button mLogOut = v.findViewById(R.id.logOutBt);
-        mLogOut.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-            }
+         mLogOut = v.findViewById(R.id.logOutBt);
+     mLogOut.setOnClickListener(v1 -> {
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         });
 
         return v;

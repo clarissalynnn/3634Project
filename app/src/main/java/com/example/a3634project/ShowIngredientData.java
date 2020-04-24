@@ -130,7 +130,7 @@ public class ShowIngredientData extends AppCompatActivity {
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 APIService service = retrofit.create(APIService.class);
-                Call<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponseCall = service.getAutocompleteIngredientsSearch("Banana",1,true);
+                Call<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponseCall = service.getAutocompleteIngredientsSearch(inputSearchIngName,1,true);
                 Response<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponse = ingredientsResponseCall.execute();
                 foodID = ingredientsResponse.body().get(0).getId();
                 String foodIDString = String.valueOf(foodID);

@@ -39,4 +39,9 @@
         <item>serving</item>
         <item>tablespoon</item>
     </string-array>
+    <string-array name="category_list1">
+        <item>g</item>
+        <item>fl oz</item>
+        <item>oz</item>
+    </string-array>
 </resources>

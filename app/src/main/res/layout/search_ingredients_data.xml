@@ -58,7 +58,7 @@
         android:id="@+id/enterSearchIngMeasurement"
         android:layout_width="127dp"
         android:layout_height="24dp"
-        android:entries="@array/category_list"
+        android:entries="@array/category_list1"
         app:layout_constraintStart_toStartOf="@+id/enterSearchIngAmtTV"
         app:layout_constraintTop_toTopOf="@+id/searchIngMeasurementTV" />
 

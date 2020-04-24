@@ -51,11 +51,6 @@ public class NutritionTips {
                 "This is particularly true of fatty fish, such as salmon, which is loaded with omega-3 fatty acids and various other nutrients.\n" +
                 "\n" +
                 "Studies show that people who eat the most fish have a lower risk of several conditions, including heart disease, dementia, and depression.\n"));
-        nutritionTips.add(new NutritionTips("https://www.unitec.ac.nz/sites/default/files/public/_resampled/how-much-do-you-sleep.jpg-821x405.jpg", "Get enough sleep", "The importance of getting enough quality sleep cannot be overstated.\n" +
-                "\n" +
-                "Poor sleep can drive insulin resistance, disrupt your appetite hormones, and reduce your physical and mental performance.\n" +
-                "\n" +
-                "What's more, poor sleep is one of the strongest individual risk factors for weight gain and obesity. One study linked insufficient sleep to an 89% and 55% increased risk of obesity in children and adults, respectively.\n"));
         nutritionTips.add(new NutritionTips("https://media.mnn.com/assets/images/2013/09/fiber-blocks-on-lentils.jpg.1440x960_q100_crop-scale_upscale.jpg", "Take care of your gut health with probiotics and fiber", "The bacteria in your gut, collectively called the gut microbiota, are incredibly important for overall health.\n" +
                 "\n" +
                 "A disruption in gut bacteria is linked to some of the world’s most serious chronic diseases, including obesity.\n" +
@@ -73,11 +68,6 @@ public class NutritionTips {
                 "However, problems occur when meat is overcooked or burnt. This can lead to the formation of harmful compounds that raise your risk of cancer.\n" +
                 "\n" +
                 "When you cook meat, make sure not to overcook or burn it.\n"));
-        nutritionTips.add(new NutritionTips("https://healthnewshub.org/wp-content/uploads/2016/08/Newsphonelight.jpg", "Avoid bright lights before sleep", "When you’re exposed to bright lights in the evening, it may disrupt your production of the sleep hormone melatonin.\n" +
-                "\n" +
-                "One strategy is to use a pair of amber-tinted glasses that block blue light from entering your eyes in the evening.\n" +
-                "\n" +
-                "This allows melatonin to be produced as if it were completely dark, helping you sleep better.\n"));
         nutritionTips.add(new NutritionTips("https://cdn1.yalemedicine.org/images/bf01fc25-4f28-4221-aa21-9ebed2a3cb84_tcm990-329590_w828_h466.jpg", "Take vitamin D3 if you don’t get much sun exposure", "Sunlight is a great source of vitamin D.\n" +
                 "\n" +
                 "Yet, most people don’t get enough sun exposure.\n" +

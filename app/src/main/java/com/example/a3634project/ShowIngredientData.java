@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.a3634project.Adapters.ExpandableListAdapter;
 import com.example.a3634project.SpoonacularAPI.APIService;
 import com.example.a3634project.SpoonacularAPI.AutocompleteIngredientsResponse;
+import com.example.a3634project.SpoonacularAPI.CaloricBreakdown;
+import com.example.a3634project.SpoonacularAPI.Ingredient;
 import com.example.a3634project.SpoonacularAPI.IngredientsResponse;
 import com.example.a3634project.SpoonacularAPI.Nutrient;
 
@@ -28,10 +30,13 @@ public class ShowIngredientData extends AppCompatActivity {
     private int enterSearchIngAmt;
     private int foodID;
     private String enterSearchIngMeasurement;
+    private List<Nutrient> nutrientsList = new ArrayList<>();
+    private CaloricBreakdown caloricBreakdown;
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
     TextView headerData;
+    private String header;
     HashMap<String, List<String>> listDataChild;
 
     @Override
@@ -39,25 +44,16 @@ public class ShowIngredientData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_ingredient_data);
         inputSearchIngName = getIntent().getStringExtra("INGREDIENT_NAME");
-        String amt = getIntent().getStringExtra("AMOUNT");
-        String measurment = getIntent().getStringExtra("MEASUREMENT");
-        String header = inputSearchIngName + " , " + amt +" "+ measurment;
-        System.out.println(header);
+        if(getIntent().getStringExtra("AMOUNT")!=null){
+        enterSearchIngAmt = Integer.parseInt(getIntent().getStringExtra("AMOUNT"));}
+        enterSearchIngMeasurement = getIntent().getStringExtra("MEASUREMENT");
+         header = inputSearchIngName + " , " + enterSearchIngAmt +" "+ enterSearchIngMeasurement;
         headerData =findViewById(R.id.nutrientTitle);
         headerData.setText(header);
         //new GetIngredientIDTask().doInBackground();
         new GetIngredientIDTask().execute();
 
-        // get the listview
-        expListView = (ExpandableListView) findViewById(R.id.lvExp);
 
-        // preparing list data
-        prepareListData();
-
-        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
-
-        // setting list adapter
-        expListView.setAdapter(listAdapter);
     }
 
     /*
@@ -75,36 +71,47 @@ public class ShowIngredientData extends AppCompatActivity {
 
         // Adding child data
         List<String> generalNutrients = new ArrayList<String>();
-        generalNutrients.add("Calorie: 0");
+        /*generalNutrients.add("Calorie: 0");
         generalNutrients.add("Fat: ");
         generalNutrients.add("Saturated Fat: ");
         generalNutrients.add("Carbohydrates: ");
         generalNutrients.add("Sugar");
         generalNutrients.add("Cholesterol");
         generalNutrients.add("Protein");
-        generalNutrients.add("Fibre");
+        generalNutrients.add("Fibre");*/
 
         List<String> minerals = new ArrayList<String>();
-        minerals.add("Sodium");
+/*        minerals.add("Sodium");
         minerals.add("Manganese");
         minerals.add("Copper");
         minerals.add("Potassium");
         minerals.add("Magnesium");
-        minerals.add("Iron");
+        minerals.add("Iron");*/
 
         List<String> vitamins = new ArrayList<String>();
-        vitamins.add("Vitamin C");
+      /*  vitamins.add("Vitamin C");
         vitamins.add("Vitamin B6");
         vitamins.add("Folate");
         vitamins.add("Vitamin B3");
         vitamins.add("Vitamin B5");
         vitamins.add("Vitamin B1");
-        vitamins.add("Vitamin A");
+        vitamins.add("Vitamin A");*/
+        System.out.println(nutrientsList.size());
+      for(int i = 0;i <nutrientsList.size();i++) {
+          System.out.println(nutrientsList.size());
+          if (nutrientsList.get(i).getTitle().contains("Fat") || nutrientsList.get(i).getTitle().contains("Carb") || nutrientsList.get(i).getTitle().contains("Sugar") ||
+                  nutrientsList.get(i).getTitle().contains("cholesterol") || nutrientsList.get(i).getTitle().contains("protein") || nutrientsList.get(i).getTitle().contains("fibre")) {
+              generalNutrients.add(nutrientsList.get(i).getTitle() + ": " + nutrientsList.get(i).getAmount() + nutrientsList.get(i).getUnit() + " ;" + nutrientsList.get(i).getPercentOfDailyNeeds());
+          } else if (nutrientsList.get(i).getTitle().contains("Vitamin") || nutrientsList.get(i).getTitle().contains("Folate")) {
+              vitamins.add(nutrientsList.get(i).getTitle() + ": " + nutrientsList.get(i).getAmount() + nutrientsList.get(i).getUnit() + " ;" + nutrientsList.get(i).getPercentOfDailyNeeds());}
+              else { {minerals.add(nutrientsList.get(i).getTitle()+": "+nutrientsList.get(i).getAmount()+nutrientsList.get(i).getUnit()+" ;"+nutrientsList.get(i).getPercentOfDailyNeeds());}
+              }
 
+      }
         List<String> calBreakdown = new ArrayList<String>();
-        calBreakdown.add("% of daily protein requirement");
-        calBreakdown.add("% of daily fat requirement");
-        calBreakdown.add("% of daily carbohydrates requirement");
+        calBreakdown.add(caloricBreakdown.getPercentProtein() +"% of daily protein requirement");
+        calBreakdown.add(caloricBreakdown.getPercentFat()+ "% of daily fat requirement");
+        calBreakdown.add(caloricBreakdown.getPercentCarbs()+"% of daily carbohydrates requirement");
 
 
         listDataChild.put(listDataHeader.get(0), generalNutrients); // Header, Child data
@@ -123,7 +130,7 @@ public class ShowIngredientData extends AppCompatActivity {
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 APIService service = retrofit.create(APIService.class);
-                Call<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponseCall = service.getAutocompleteIngredientsSearch("Pineapple",1,true);
+                Call<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponseCall = service.getAutocompleteIngredientsSearch("Banana",1,true);
                 Response<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponse = ingredientsResponseCall.execute();
                 foodID = ingredientsResponse.body().get(0).getId();
                 String foodIDString = String.valueOf(foodID);
@@ -151,19 +158,35 @@ public class ShowIngredientData extends AppCompatActivity {
                         .build();
 
                 APIService service = retrofit.create(APIService.class);
-                System.out.println("Ingredietns data methid id input is : "  + foodID);
+                System.out.println("Ingredietns data methid id input is : "  + foodID + enterSearchIngMeasurement+enterSearchIngAmt);
                 Call<IngredientsResponse> ingredientsResponseCall = service.getFoodInformation(foodID,enterSearchIngAmt,enterSearchIngMeasurement);
                 Response<IngredientsResponse> ingredientsResponse = ingredientsResponseCall.execute();
-                List<Nutrient> nutrientsList = ingredientsResponse.body().getNutrition().getNutrients();
-                System.out.println(nutrientsList.get(0).getTitle());
-                System.out.println(nutrientsList.get(1).getTitle());
-                foodID = ingredientsResponse.body().getId();
-                System.out.println("JOOOOOOOOOOOOOOO"+ foodID);
+                nutrientsList = ingredientsResponse.body().getNutrition().getNutrients();
+                caloricBreakdown = ingredientsResponse.body().getNutrition().getCaloricBreakdown();
+                for (int i = 0;i<5;i++){
+                    System.out.println(caloricBreakdown.getPercentFat());
+                    System.out.println(caloricBreakdown.getPercentCarbs());
+                    System.out.println(caloricBreakdown.getPercentProtein());
+                }
+
                 return String.valueOf(foodID);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             return null;
+        }
+        @Override
+        protected void onPostExecute(String recipe) {
+            // get the listview
+            expListView = (ExpandableListView) findViewById(R.id.lvExp);
+
+            // preparing list data
+            prepareListData();
+
+            listAdapter = new ExpandableListAdapter(ShowIngredientData.this, listDataHeader, listDataChild);
+
+            // setting list adapter
+            expListView.setAdapter(listAdapter);
         }
 
     }

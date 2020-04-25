@@ -53,9 +53,9 @@ public class LoginActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String json = sharedpreferences.getString("MyUser", "");
         User userLogged = gson.fromJson(json, User.class);
-        System.out.println(userLogged.getEmail()+"onCreate");
+        //System.out.println(userLogged.getEmail()+"onCreate");
 
-        if(sharedpreferences.getBoolean("LOGGED",false)){
+        if(sharedpreferences.getBoolean("LOGGED",false)==true){
             Intent i = new Intent(this,MainActivity.class);
             System.out.println(userLogged.getEmail()+"stay");
             i.putExtra("User", userLogged);

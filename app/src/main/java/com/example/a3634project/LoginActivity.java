@@ -3,6 +3,7 @@ package com.example.a3634project;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +20,6 @@ import android.widget.Toast;
 import com.example.a3634project.Database.UserDao;
 import com.example.a3634project.Database.UserDatabase;
 import com.example.a3634project.Models.User;
-import com.google.gson.Gson;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -31,11 +31,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private UserDao userDao;
     private ProgressDialog progressDialog;
-/*    SharedPreferences sharedpreferences;
-    public static final String MyPREFERENCES = "myprefs";
+    //private SharedPreferences sharedpreferences;
+    public static final String SHARED_PREFS = "sharedPrefs";
     public static final  String value = "key";
     private String login;
-    private User user_autologin;*/
+    private User user_autologin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,20 +49,6 @@ public class LoginActivity extends AppCompatActivity {
             finish();
             //return;
         }*/
-        SharedPreferences sharedpreferences = getSharedPreferences("User",MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedpreferences.getString("MyUser", "");
-        User userLogged = gson.fromJson(json, User.class);
-        //System.out.println(userLogged.getEmail()+"onCreate");
-
-        if(sharedpreferences.getBoolean("LOGGED",false)==true){
-            Intent i = new Intent(this,MainActivity.class);
-            System.out.println(userLogged.getEmail()+"stay");
-            i.putExtra("User", userLogged);
-            startActivity(i);
-        }
-
-
         setContentView(R.layout.activity_login);
 
         progressDialog = new ProgressDialog(this);
@@ -82,7 +68,6 @@ public class LoginActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.emailInput);
         edtPassword = findViewById(R.id.passwordInput);
 
-
         btSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,15 +84,13 @@ public class LoginActivity extends AppCompatActivity {
                         public void run() {
                             User user = userDao.getUser(edtEmail.getText().toString(), edtPassword.getText().toString());
                             if(user!=null){
-                                SharedPreferences sharedpreferences = getSharedPreferences("User",MODE_PRIVATE);
-                                sharedpreferences.edit().putString("EMAIL", edtEmail.getText().toString()).apply();
-                                sharedpreferences.edit().putString("PASS", edtPassword.getText().toString()).apply();
-                                sharedpreferences.edit().putBoolean("LOGGED",true);
-                                SharedPreferences.Editor prefsEditor = sharedpreferences.edit();
-                                Gson gson = new Gson();
-                                String json = gson.toJson(user);
-                                prefsEditor.putString("MyUser", json);
-                                prefsEditor.commit();
+                                /*SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString()*/
+
+                                SaveSharedPreference.setPrefEmail(LoginActivity.this, user.getEmail());
+                                SaveSharedPreference.setPrefPassword(LoginActivity.this, user.getPassword());
+
                                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                                 i.putExtra("User", user);
                                 startActivity(i);
@@ -131,5 +114,11 @@ public class LoginActivity extends AppCompatActivity {
         }else {
             return false;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        //moveTaskToBack(true);
     }
 }

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +19,11 @@ import android.widget.TextView;
 
 import com.example.a3634project.Adapters.HomeAdapter;
 import com.example.a3634project.Adapters.TopicAdapter;
+import com.example.a3634project.Database.UserDao;
+import com.example.a3634project.Database.UserDatabase;
 import com.example.a3634project.R;
 import com.example.a3634project.Models.User;
+import com.example.a3634project.SaveSharedPreference;
 import com.example.a3634project.SpoonacularAPI.APIService;
 import com.example.a3634project.add_food;
 import com.example.a3634project.add_fruits;
@@ -40,12 +44,14 @@ public class HomeFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private User user;
     private String TAG;
     //private TextView mGreetings;
     private TextView mRecipeRec;
     private TextView mRecipeTitle;
     private TextView mFoodJoke;
+    private User user;
+    private UserDao userDao;
+    private UserDatabase database;
 
 
     public HomeFragment() {
@@ -57,6 +63,13 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
 
+        database = Room.databaseBuilder(getActivity(), UserDatabase.class, "user-database.db")
+                .allowMainThreadQueries()
+                .build();
+
+        userDao = database.getUserDao();
+        user = userDao.getUser(SaveSharedPreference.getPrefEmail(getActivity()), SaveSharedPreference.getPrefPassword(getActivity()));
+
         //new GetRecipeTask().execute();
     }
 
@@ -66,7 +79,6 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-        user = (User) getActivity().getIntent().getSerializableExtra("User");
         mRecyclerView = v.findViewById(R.id.homeRecyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new GridLayoutManager(getActivity(), 2);

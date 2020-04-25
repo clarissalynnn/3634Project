@@ -6,21 +6,34 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.a3634project.Database.UserDao;
+import com.example.a3634project.Database.UserDatabase;
 import com.example.a3634project.Fragments.QuizFragment;
 import com.example.a3634project.Fragments.ExploreFragment;
 import com.example.a3634project.Fragments.HomeFragment;
 import com.example.a3634project.Fragments.ProfileFragment;
+import com.example.a3634project.Models.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    private UserDao userDao;
+    private UserDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(SaveSharedPreference.getPrefEmail(MainActivity.this).length() == 0){
+            // call login activity
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);

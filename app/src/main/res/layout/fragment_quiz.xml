@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Cornsilk"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragments.QuizFragment"
-    android:background="@color/Cornsilk">
+    tools:context=".Fragments.QuizFragment">
 
     <TextView
         android:id="@+id/TopicsTv"
@@ -39,18 +38,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TopicsTv" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:clipToPadding="false"
-        android:padding="4dp"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/launchQuizBt"
+        android:layout_width="296dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="#FF9800"
+        android:text="Launch Quiz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHeight_percent="0.80"
-        android:background="@android:color/white"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

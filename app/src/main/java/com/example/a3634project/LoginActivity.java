@@ -3,6 +3,7 @@ package com.example.a3634project;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -30,8 +31,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private UserDao userDao;
     private ProgressDialog progressDialog;
-    private SharedPreferences sharedpreferences;
-    public static final String MyPREFERENCES = "myprefs";
+    //private SharedPreferences sharedpreferences;
+    public static final String SHARED_PREFS = "sharedPrefs";
     public static final  String value = "key";
     private String login;
     private User user_autologin;
@@ -67,7 +68,6 @@ public class LoginActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.emailInput);
         edtPassword = findViewById(R.id.passwordInput);
 
-
         btSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,9 +84,13 @@ public class LoginActivity extends AppCompatActivity {
                         public void run() {
                             User user = userDao.getUser(edtEmail.getText().toString(), edtPassword.getText().toString());
                             if(user!=null){
-                              /*  SharedPreferences.Editor editor = sharedpreferences.edit();
-                                editor.putString(value, edtEmail.getText().toString());
-                                editor.apply();*/
+                                /*SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString()*/
+
+                                SaveSharedPreference.setPrefEmail(LoginActivity.this, user.getEmail());
+                                SaveSharedPreference.setPrefPassword(LoginActivity.this, user.getPassword());
+
                                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                                 i.putExtra("User", user);
                                 startActivity(i);
@@ -110,5 +114,11 @@ public class LoginActivity extends AppCompatActivity {
         }else {
             return false;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        //moveTaskToBack(true);
     }
 }

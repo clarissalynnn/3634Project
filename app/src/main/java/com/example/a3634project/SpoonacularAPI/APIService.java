@@ -34,7 +34,10 @@ public interface APIService {
             "x-rapidapi-key: 779cdd11b5mshfa9dfb040cef863p158cadjsnd1db648573c8"
     })
     @GET("/recipes/{id}/information")
-    Call<RecipeDetailResponse> getRecipeDetail(@Path("id") int id);
+    Call<RecipeDetailResponse> getRecipeDetail(
+            @Path("id") int id
+
+    );
 
 
     @Headers({"x-rapidapi-host: spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",

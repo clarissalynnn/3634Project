@@ -20,6 +20,7 @@ public class waterListItem {
     }
 
     public static ArrayList<waterListItem> getList(){
+        //ArrayList to load into add_water activity
         ArrayList<waterListItem> waterListItems = new ArrayList<>();
 
         waterListItems.add(new waterListItem(R.drawable.waterglass, "Glass of water ~250ml"));

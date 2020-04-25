@@ -22,12 +22,14 @@
         android:id="@+id/lNameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginLeft="108dp"
+        android:layout_marginTop="28dp"
         android:text="Last Name"
         android:textColor="#000000"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/lastnameInput"
-        app:layout_constraintTop_toBottomOf="@+id/nameInput" />
+        app:layout_constraintStart_toEndOf="@+id/fNameTv"
+        app:layout_constraintTop_toBottomOf="@+id/messageTv" />
 
     <TextView
         android:id="@+id/emailTv"
@@ -38,7 +40,7 @@
         android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/emailInput"
-        app:layout_constraintTop_toBottomOf="@+id/lastnameInput" />
+        app:layout_constraintTop_toBottomOf="@+id/nameInput" />
 
     <TextView
         android:id="@+id/passwordTv"
@@ -55,7 +57,7 @@
         android:id="@+id/fNameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="28dp"
         android:text="First Name"
         android:textColor="#000000"
         android:textStyle="bold"
@@ -66,40 +68,40 @@
         android:id="@+id/signUpTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="72dp"
         android:text="Sign Up"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintHorizontal_bias="0.186"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/nameInput"
-        android:layout_width="296dp"
-        android:layout_height="wrap_content"
+        android:layout_width="123dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
         android:ems="10"
         android:hint="John"
         android:inputType="textPersonName"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fNameTv" />
 
     <EditText
         android:id="@+id/lastnameInput"
-        android:layout_width="296dp"
-        android:layout_height="wrap_content"
+        android:layout_width="122dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
         android:ems="10"
         android:hint="Smith"
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lNameTv" />
 
     <EditText
@@ -111,7 +113,7 @@
         android:inputType="textEmailAddress"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailTv" />
 
@@ -132,14 +134,14 @@
         android:id="@+id/btSignUp"
         android:layout_width="296dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Sign Up"
+        android:layout_marginTop="20dp"
         android:background="@color/Navy"
+        android:text="Sign Up"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+        app:layout_constraintTop_toBottomOf="@+id/dietInput" />
 
     <TextView
         android:id="@+id/btLogin"
@@ -165,6 +167,84 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/signUpTv"
         app:layout_constraintTop_toBottomOf="@+id/signUpTv" />
+
+    <TextView
+        android:id="@+id/weightLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="24dp"
+        android:text="Weight"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+
+    <TextView
+        android:id="@+id/heightLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginLeft="132dp"
+        android:layout_marginTop="24dp"
+        android:text="Height"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/weightLabel"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+
+    <EditText
+        android:id="@+id/weightInput"
+        android:layout_width="123dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:ems="10"
+        android:hint="in kg"
+        android:inputType="number"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weightLabel" />
+
+    <EditText
+        android:id="@+id/heightInput"
+        android:layout_width="123dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
+        android:ems="10"
+        android:hint="in cm"
+        android:inputType="number"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heightLabel" />
+
+    <TextView
+        android:id="@+id/dietLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="24dp"
+        android:text="Diet"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weightInput" />
+
+    <EditText
+        android:id="@+id/dietInput"
+        android:layout_width="123dp"
+        android:layout_height="36dp"
+        android:ems="10"
+        android:hint="ex. Keto"
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dietLabel" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

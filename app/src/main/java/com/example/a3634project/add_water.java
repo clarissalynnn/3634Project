@@ -20,7 +20,7 @@ public class add_water extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    //private ArrayList<String> waterFacts;
+
     String [] waterFacts = {"Did you know that our body is made up of 55 - 75% water?",
             "It is healthy to drink water while eating as it aids the process of digestion",
             "Good water intake prevents the skin from sagging",

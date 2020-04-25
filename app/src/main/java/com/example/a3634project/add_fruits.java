@@ -31,6 +31,7 @@ public class add_fruits extends AppCompatActivity {
             "Did you know that yellow-colored fruits prevent you from getting sick?"
     };
 
+    // generate ranodm quotes from the Array above
     Random random = new Random();
     int fruitsFacts1 = random.nextInt(fruitsFacts.length);
     String fruitsFactsDisplay = fruitsFacts[fruitsFacts1];
@@ -40,6 +41,7 @@ public class add_fruits extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_fruits);
 
+        // ArrayList of fruits to load into fruitsImage and fruitsName
         ArrayList<FruitListItem> fruitsList = new ArrayList<>();
         //apple image source: pexels.com
         fruitsList.add(new FruitListItem(R.drawable.apple1, "Apple"));

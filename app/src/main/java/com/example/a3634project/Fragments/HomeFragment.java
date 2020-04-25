@@ -86,6 +86,7 @@ public class HomeFragment extends Fragment {
         TextView greetings = v.findViewById(R.id.greetingsTv);
         greetings.setText(setGreetings() + " " + user.getFirst_name() + "!");
 
+        // Switch to respective activities when cardviews are pressed.
         HomeAdapter.RecyclerViewClickListener listener = new HomeAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
@@ -116,21 +117,25 @@ public class HomeFragment extends Fragment {
 
     }
 
+    // launch add water activity
     private void launchAddWaterActivity(){
     Intent intent = new Intent(getActivity(), add_water.class);
     startActivity(intent);
 }
 
+    // launch add vitamins activity
 private void launchAddVitaminsActivity(){
         Intent intent = new Intent(getActivity(), add_vitamins.class);
         startActivity(intent);
 }
 
+    //launch add fruits activity
 private void launchAddFruitsActivity(){
         Intent intent = new Intent(getActivity(), add_fruits.class);
         startActivity(intent);
 }
 
+    //launch add food activity
 private void launchAddFoodActivity(){
         Intent intent = new Intent(getActivity(), add_food.class);
         startActivity(intent);

@@ -3,11 +3,8 @@ package com.example.a3634project;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -64,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         userDao = database.getUserDao();
 
         btLogin = findViewById(R.id.btLogin);
-        btSignUp = findViewById(R.id.btSignUp);
+        btSignUp = findViewById(R.id.btConfirm);
         edtEmail = findViewById(R.id.emailInput);
         edtPassword = findViewById(R.id.passwordInput);
 

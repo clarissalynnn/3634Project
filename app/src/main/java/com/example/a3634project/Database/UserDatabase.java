@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase;
 
 import com.example.a3634project.Models.User;
 
-@Database(entities = {User.class}, version = 1)
+@Database(entities = {User.class}, version = 2)
 public abstract class UserDatabase extends RoomDatabase {
 
     public abstract UserDao getUserDao();

@@ -21,7 +21,9 @@ public class add_water extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    String [] waterFacts = {"Did you know that our body is made up of 55 - 75% water?",
+    String [] waterFacts = {
+            // facts are from https://www.health24.com/Diet-and-nutrition/Beverages/12-interesting-water-facts-20120721
+            "Did you know that our body is made up of 55 - 75% water?",
             "It is healthy to drink water while eating as it aids the process of digestion",
             "Good water intake prevents the skin from sagging",
             "Water is the main food that the body needs",

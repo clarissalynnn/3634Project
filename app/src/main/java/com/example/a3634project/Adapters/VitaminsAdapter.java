@@ -30,9 +30,9 @@ public class VitaminsAdapter extends RecyclerView.Adapter<VitaminsAdapter.vitami
     public static ArrayList<vitaminsListItem> mVitaminsList;
     public static ArrayList<String> userVitInput;
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-     static Date date = Calendar.getInstance().getTime();
-      static FoodIntakeInputDao foodIntakeInputDao;
-      public static vitaminsListItem vitamins1;
+    static Date date = Calendar.getInstance().getTime();
+    static FoodIntakeInputDao foodIntakeInputDao;
+    public static vitaminsListItem vitamins1;
     static DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
     private static View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
@@ -87,7 +87,7 @@ public class VitaminsAdapter extends RecyclerView.Adapter<VitaminsAdapter.vitami
             mIntakeInput = itemView.findViewById(R.id.vitaminsIntake);
 
 
-
+// code adapted from: https://www.youtube.com/watch?v=Wpywg8-1Q3Q #10 Android studio tutorial - How to count number of Button clicks in Android. NEW
             mPlusImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

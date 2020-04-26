@@ -45,6 +45,7 @@ public class add_vitamins extends AppCompatActivity {
     }
 
     String [] vitaminsFacts ={
+            // facts adapted from https://www.multivitaminguide.org/infographic/20-fun-facts-about-vitamins.html
             "Did you know that Vitamin A is the first vitamin ever discovered?",
             "Did you know that the original name of Omega 3 and 6 fatty acids is Vitamin F?",
             "Did you know that Vitamin B helps your body produce energy?",

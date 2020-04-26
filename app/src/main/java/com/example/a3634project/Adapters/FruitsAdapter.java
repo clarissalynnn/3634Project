@@ -35,6 +35,7 @@ private ArrayList<FruitListItem> mFruitsList;
             mFruitName = itemView.findViewById(R.id.fruitsName);
             mCheckBox = itemView.findViewById(R.id.fruitsCheck);
 
+            // code adapted from https://stackoverflow.com/questions/8386832/android-checkbox-listener
             mCheckBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

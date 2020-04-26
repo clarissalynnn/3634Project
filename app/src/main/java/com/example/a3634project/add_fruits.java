@@ -43,41 +43,59 @@ public class add_fruits extends AppCompatActivity {
 
         // ArrayList of fruits to load into fruitsImage and fruitsName
         ArrayList<FruitListItem> fruitsList = new ArrayList<>();
-        //apple image source: pexels.com
+        //apple image source: pxhere.com
+        // Hazelwood S 2018, Apples, pxhere, viewed 22 April 2020, <https://pxhere.com/en/photo/1453957>
         fruitsList.add(new FruitListItem(R.drawable.apple1, "Apple"));
-        //avocado image source: unsplash.com
+        //avocado image source: unsplash.com, credit to www.quotecatalog.com
+        // Thought catalog n.d, Avocado, unsplash, viewed 22 April 2020, <https://unsplash.com/photos/EMX1eJ1BcgU>
         fruitsList.add(new FruitListItem(R.drawable.avocado1, "Avocado"));
         //banana image source: unsplash.com
+        // Dorner M 2016, Banana, unsplash, viewed 22 April 2020, <https://unsplash.com/photos/sf_1ZDA1YFw>
         fruitsList.add(new FruitListItem(R.drawable.banana1, "Banana"));
         //blueberry pixabay.com
+        // Comfreak 2018, Blueberry, pixabay, viewed 22 April 2020, <https://pixabay.com/photos/blueberry-black-berry-moll-berry-3460423/>
         fruitsList.add(new FruitListItem(R.drawable.blueberry1, "Blueberry"));
         //kiwi unsplash.com
+        // Vyas A 2019, Sliced kiwi on white surface, viewed 22 April 2020, <https://unsplash.com/photos/0islNC8XGlY>
         fruitsList.add(new FruitListItem(R.drawable.kiwi1, "Kiwi"));
         //lemon pexels.com
+        // Fotios L 2018, Close-up photography of sliced lemon, Pexels, viewed 22 April 2020, <https://www.pexels.com/photo/close-up-photography-of-sliced-lemon-1002543/>
         fruitsList.add(new FruitListItem(R.drawable.lemon1, "Lemon"));
         //mango best-wallpaper.net
-        fruitsList.add(new FruitListItem(R.drawable.mango1, "Mango"));
-        //orange pxleyes.com
-        fruitsList.add(new FruitListItem(R.drawable.orange1, "Orange"));
+        // Hotchicksing 2018, Tray of mango photo, Unsplash, viewed 26 April 2020, <https://unsplash.com/photos/Dyc95dKuGp4>
+        fruitsList.add(new FruitListItem(R.drawable.mango2, "Mango"));
+        //orange unsplash.com
+        // Mu M 2019, Orange fruit photo, Unsplash, viewed 26 April 2020, <https://unsplash.com/photos/U1iYwZ8Dx7k>
+        fruitsList.add(new FruitListItem(R.drawable.orange2, "Orange"));
         //passionfruit healthline.com
+        //
         fruitsList.add(new FruitListItem(R.drawable.passionfruit1, "Passionfruit"));
-        //peach cookinglight.com
-        fruitsList.add(new FruitListItem(R.drawable.peach1, "Peach"));
+        //peach unsplash.com
+        // Hunt L 2018, Crate of reed fruit photo, Unsplash, viewed 26 April 2020, <https://unsplash.com/photos/O3TlS547j7k>
+        fruitsList.add(new FruitListItem(R.drawable.peach2, "Peach"));
         //pear pexels.com
+        // Onojeghuo C 2016, 3 pear fruits, Unsplashed, viewed 22 April 2020, <https://www.pexels.com/photo/3-pear-fruits-175767/>
         fruitsList.add(new FruitListItem(R.drawable.pear1, "Pear"));
         //pineapple pexels.com
+        // Koppens Y 2018, Photography of Pinapples, Pexels, viewed 22 April 2020, <https://www.pexels.com/photo/photography-of-pineapple-915017/>
         fruitsList.add(new FruitListItem(R.drawable.pineapple1, "Pineapple"));
         //papaya unsplash.com
+        // Cardenas D 2018, Sliced papaya fruits on brown surface photo, Unsplash, viewed 22 April 2020, <https://unsplash.com/photos/BIj5FAFQ_rk>
         fruitsList.add(new FruitListItem(R.drawable.papaya1, "Papaya"));
         //plum pixabay.com
+        // Ponce_photography 2016, Plum fruit food, Pixabay, viewed 22 April 2020, <https://pixabay.com/photos/plum-fruit-food-healthy-fresh-1430343/>
         fruitsList.add(new FruitListItem(R.drawable.plum1, "Plum"));
         //raspberry pxhere.com
+        // Raspberry 2017, Pxhere, viewed 22 April 2020, <https://pxhere.com/en/photo/571914>
         fruitsList.add(new FruitListItem(R.drawable.raspberry1, "Raspberry"));
         //rockmelon dreamstime.com
+        // Rockmelon, Dreamstime, viewed 22 April 2020, <https://thumbs.dreamstime.com/b/half-ripe-organic-cantaloupe-melon-muskmelon-mushmelon-rockmelon-straw-napkin-background-selective-focus-117663734.jpg>
         fruitsList.add(new FruitListItem(R.drawable.rockmelon1, "Rockmelon"));
         //strawberry pexels.com
+        // Koppens Y 2018, Macro photography of strawberry, Pexels, viewed 22 April 2020, <https://www.pexels.com/photo/macro-photography-of-strawberry-934066/>
         fruitsList.add(new FruitListItem(R.drawable.strawberry1, "Strawberry"));
         //watermelon pexels.com
+        // Hughes E 2020, Flat lay photogrophy of slices of red watermelon, Pexels, viewed 22 April 2020, <https://www.pexels.com/photo/flat-lay-photography-of-slices-of-red-watermelon-3513238/>
         fruitsList.add(new FruitListItem(R.drawable.watermelon1, "Watermelon"));
 
         mRecyclerView = findViewById(R.id.recyclerViewFruits);

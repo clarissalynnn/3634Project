@@ -44,11 +44,6 @@ public class HomeFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private String TAG;
-    //private TextView mGreetings;
-    private TextView mRecipeRec;
-    private TextView mRecipeTitle;
-    private TextView mFoodJoke;
     private User user;
     private UserDao userDao;
     private UserDatabase database;
@@ -70,7 +65,6 @@ public class HomeFragment extends Fragment {
         userDao = database.getUserDao();
         user = userDao.getUser(SaveSharedPreference.getPrefEmail(getActivity()), SaveSharedPreference.getPrefPassword(getActivity()));
 
-        //new GetRecipeTask().execute();
     }
 
     @Override
@@ -119,58 +113,27 @@ public class HomeFragment extends Fragment {
 
     // launch add water activity
     private void launchAddWaterActivity(){
-    Intent intent = new Intent(getActivity(), add_water.class);
-    startActivity(intent);
+        Intent intent = new Intent(getActivity(), add_water.class);
+        startActivity(intent);
 }
 
     // launch add vitamins activity
-private void launchAddVitaminsActivity(){
+    private void launchAddVitaminsActivity(){
         Intent intent = new Intent(getActivity(), add_vitamins.class);
         startActivity(intent);
 }
 
     //launch add fruits activity
-private void launchAddFruitsActivity(){
+    private void launchAddFruitsActivity(){
         Intent intent = new Intent(getActivity(), add_fruits.class);
         startActivity(intent);
 }
 
     //launch add food activity
-private void launchAddFoodActivity(){
+    private void launchAddFoodActivity(){
         Intent intent = new Intent(getActivity(), add_food.class);
         startActivity(intent);
 }
-
-
-
-/*    private class GetRecipeTask extends AsyncTask<Void, Void, String> {
-
-        @Override
-        protected String doInBackground(Void... voids) {
-            try{
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-
-                APIService service = retrofit.create(APIService.class);
-                Call<RecipeResponse> recipeCall = service.getRandomRecipe();
-
-                Response<RecipeResponse> recipeResponse = recipeCall.execute();
-                String recipe = recipeResponse.body().getRecipes().get(0).getTitle();
-                return recipe;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String recipe) {
-            TextView title = getActivity().findViewById(R.id.recipeTitleTv);
-            title.setText(recipe);
-        }
-    }*/
 
     public String setGreetings() {
         Calendar c = Calendar.getInstance();

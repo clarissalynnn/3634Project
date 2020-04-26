@@ -10,8 +10,8 @@ import java.util.List;
 
 public class NutritionList extends ExpandableGroup<NutrientGroups> {
 
-
     public NutritionList(String title, List<NutrientGroups> items) {
         super(title, items);
     }
+
 }

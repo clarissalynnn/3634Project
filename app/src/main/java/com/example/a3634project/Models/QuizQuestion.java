@@ -50,6 +50,7 @@ public class QuizQuestion {
         return explanation;
     }
 
+    // questions adapted from https://www.ncagr.gov/cyber/kidswrld/nutrition/NutritionQuiz.html
     public static ArrayList<QuizQuestion> getQuestions() {
         ArrayList<QuizQuestion> question = new ArrayList<>();
         question.add(new QuizQuestion("Which of the following is NOT true about water?", "Drinking water boosts metabolism", "85% of human brain tissue is water", "A good rule of thumb is to drink 10-12 glasses of water per day", "Water reduces kidney stones", 3, "There is no evidence to show that drinking 10-12 glasses of water is necessary. Generally, nutritionists recommend we follow the \"8x8\" rule, which is to drink eight 8-ounce glasses of water per day.\n" +

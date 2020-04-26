@@ -114,9 +114,6 @@ public class QuizActivity extends AppCompatActivity {
                 break;
         }
 
-        /*Button answerBt = (Button) findViewById(view.getId());
-        String btText = answerBt.getText().toString();*/
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(alertTitle);
         builder.setMessage("Answer: " + correctAnswer + "\n\n" + currentQuestion.getExplanation());

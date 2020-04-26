@@ -71,32 +71,6 @@ public class add_water extends AppCompatActivity {
         mAdapter = new WaterAdapter(waterListItem.getList(), listener);
         mRecyclerView.setAdapter(mAdapter);
 
-        /*mWaterFacts = (TextView) findViewById(R.id.waterFacts);
-        mWaterFacts.setText(randomFacts1);
-
-        mIntakeInput = (TextView) findViewById(R.id.intakeInput);
-        mIntakeInput.setText("0");
-        mGlassText = findViewById(R.id.glassText);
-        mBottleText = findViewById(R.id.bottleText);
-        mGlassText.setOnClickListener(new View.OnClickListener() {
-            int water = Integer.parseInt(mIntakeInput.getText().toString());
-            @Override
-            public void onClick(View v) {
-                water += 250;
-                mIntakeInput.setText(Integer.toString(water) + "ml");
-            }
-        });
-
-        mBottleText.setOnClickListener(new View.OnClickListener() {
-            int water = Integer.parseInt(mIntakeInput.getText().toString());
-            @Override
-            public void onClick(View v) {
-                water += 500;
-                mIntakeInput.setText(Integer.toString(water) + "ml");
-
-            }
-        });*/
-
     }
 
 

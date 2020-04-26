@@ -86,7 +86,6 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(RecipeDetailResponse recipeDetail) {
-            //NumberFormat formatter = NumberFormat.getCurrencyInstance();
             Picasso.get().load(recipeDetail.getImage()).into(mImage);
             mTitle.setText(recipeDetail.getTitle());
             mLike.setText(String.valueOf(recipeDetail.getAggregateLikes()));

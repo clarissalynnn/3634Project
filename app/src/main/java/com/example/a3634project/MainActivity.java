@@ -20,8 +20,6 @@ import com.example.a3634project.Models.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private UserDao userDao;
-    private UserDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

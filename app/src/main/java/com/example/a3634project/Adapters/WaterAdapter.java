@@ -57,9 +57,9 @@ private RecyclerViewClickListener mListener;
 
     @Override
     public void onBindViewHolder(@NonNull WaterAdapter.ViewHolder holder, int position) {
-    waterListItem water = mWaterListItems.get(position);
-    holder.mWaterImage.setImageResource(water.getmWaterImage());
-    holder.mWaterName.setText(water.getmWaterName());
+        waterListItem water = mWaterListItems.get(position);
+        holder.mWaterImage.setImageResource(water.getmWaterImage());
+        holder.mWaterName.setText(water.getmWaterName());
     }
 
     @Override

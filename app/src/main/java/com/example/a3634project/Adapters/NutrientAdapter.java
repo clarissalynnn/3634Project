@@ -37,7 +37,6 @@ public class NutrientAdapter extends RecyclerView.Adapter<NutrientAdapter.Nutrie
 
     public NutrientAdapter(List<NutrientData> nutrientDataList){this.nutrientDataList= nutrientDataList;};
 
-
     @NonNull
     @Override
     public NutrientVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -69,11 +68,11 @@ public class NutrientAdapter extends RecyclerView.Adapter<NutrientAdapter.Nutrie
             ExpandableLayout = itemView.findViewById(R.id.ExpandableLayout);
             nutrientName = itemView.findViewById(R.id.Nutrient);
             percentOfDailyNeeds = itemView.findViewById(R.id.percentofdailyNeeds);
-        nutrientName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NutrientData nutrientData = nutrientDataList.get(getAdapterPosition());
-                nutrientData.setExpanded(!nutrientData.isExpanded());notifyItemChanged(getAdapterPosition());
+            nutrientName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NutrientData nutrientData = nutrientDataList.get(getAdapterPosition());
+                    nutrientData.setExpanded(!nutrientData.isExpanded());notifyItemChanged(getAdapterPosition());
             }
         });
 

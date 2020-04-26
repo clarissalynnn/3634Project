@@ -28,24 +28,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private UserDao userDao;
     private ProgressDialog progressDialog;
-    //private SharedPreferences sharedpreferences;
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final  String value = "key";
-    private String login;
-    private User user_autologin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    /*    sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-         login = sharedpreferences.getString(value, "pat");
-        if (login != null) {
-            //put your code if user is logged. For example, go to another activity
-            System.out.println("hihihih1");
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            finish();
-            //return;
-        }*/
         setContentView(R.layout.activity_login);
 
         progressDialog = new ProgressDialog(this);
@@ -81,9 +69,6 @@ public class LoginActivity extends AppCompatActivity {
                         public void run() {
                             User user = userDao.getUser(edtEmail.getText().toString(), edtPassword.getText().toString());
                             if(user!=null){
-                                /*SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString()*/
                                 SaveSharedPreference.setPrefEmail(LoginActivity.this, user.getEmail());
                                 SaveSharedPreference.setPrefPassword(LoginActivity.this, user.getPassword());
                                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
@@ -114,6 +99,5 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
-        //moveTaskToBack(true);
     }
 }

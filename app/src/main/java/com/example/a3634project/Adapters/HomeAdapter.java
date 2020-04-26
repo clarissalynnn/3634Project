@@ -15,6 +15,9 @@ import com.example.a3634project.homeListItem;
 import java.util.ArrayList;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
+    // code adapted from Coding In Flow
+    // RecyclerView + CardView - Part 4 - On Item Click Interface - Android Studio Tutorial 2017, video recording, Coding in Flow, <https://www.youtube.com/watch?v=bhhs4bwYyhc&t=99s>
+    // HomeAdapter used to load images and category names in the CardView layout of homeListItem which will then be loaded into the RecyclerView on the HomeFragment
     private ArrayList<homeListItem> homeListItems;
 
     private RecyclerViewClickListener mListener;

@@ -1,17 +1,13 @@
 package com.example.a3634project.Adapters;
 
-import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.a3634project.HealthyDietDetailActivity;
 import com.example.a3634project.Models.HealthyDiet;
 import com.example.a3634project.R;
 
@@ -20,17 +16,6 @@ import java.util.ArrayList;
 public class HealthyDietAdapter extends RecyclerView.Adapter<HealthyDietAdapter.ViewHolder> {
     private ArrayList<HealthyDiet> healthyDietList;
     private RecyclerViewClickListener mListener;
-
-    /*private View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            HealthyDiet diet = (HealthyDiet) v.getTag();
-            Context context = v.getContext();
-            Intent intent = new Intent(context, HealthyDietDetailActivity.class);
-            intent.putExtra("ARG_ITEM_ID", diet.getDietType());
-            context.startActivity(intent);
-        }
-    };*/
 
     public interface RecyclerViewClickListener {
         void onClick(View view, int position);

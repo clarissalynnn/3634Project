@@ -1,7 +1,6 @@
+package com.example.a3634project.Adapters;
 
-        package com.example.a3634project.Adapters;
-
-        import android.view.LayoutInflater;
+import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.Button;
@@ -10,9 +9,7 @@
 
         import androidx.annotation.NonNull;
         import androidx.recyclerview.widget.RecyclerView;
-        import androidx.room.Room;
 
-        import com.example.a3634project.Database.UserDatabase;
         import com.example.a3634project.Database.VitaminIntakeDao;
         import com.example.a3634project.Database.VitaminIntakeDatabase;
         import com.example.a3634project.R;

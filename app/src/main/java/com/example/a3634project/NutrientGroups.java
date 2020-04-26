@@ -61,8 +61,8 @@ public class NutrientGroups  implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-    dest.writeString(getName());
-    dest.writeString(getAmount());
-    dest.writeString(getPercentofDailyNeeds());}
+        dest.writeString(getName());
+        dest.writeString(getAmount());
+        dest.writeString(getPercentofDailyNeeds());}
 
 }

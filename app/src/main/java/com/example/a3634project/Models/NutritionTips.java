@@ -28,6 +28,7 @@ public class NutritionTips {
         return description;
     }
 
+    // data obtained from https://www.healthline.com/nutrition/27-health-and-nutrition-tips
     public static ArrayList<NutritionTips> getNutritionTips() {
         ArrayList<NutritionTips> nutritionTips = new ArrayList<>();
         nutritionTips.add(new NutritionTips("https://img.medscape.com/thumbnail_library/dt_190711_soda_sugary_drinks_800x450.jpg","Don’t drink sugar calories", "Sugary drinks are among the most fattening items you can put into your body.\n\n" +

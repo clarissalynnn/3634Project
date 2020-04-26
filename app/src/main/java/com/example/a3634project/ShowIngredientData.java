@@ -52,7 +52,6 @@ public class ShowIngredientData extends AppCompatActivity {
         headerTitle = findViewById(R.id.nutrientTitle);
         headerData = findViewById(R.id.nutrientInput);
 
-        //new GetIngredientIDTask().doInBackground();
         new GetIngredientIDTask().execute();
 
 
@@ -135,7 +134,6 @@ public class ShowIngredientData extends AppCompatActivity {
                 Call<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponseCall = service.getAutocompleteIngredientsSearch(inputSearchIngName,1,true);
                 Response<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponse = ingredientsResponseCall.execute();
                 foodID = ingredientsResponse.body().get(0).getId();
-                System.out.println("JOOOOOOOOOOOOOOO"+ resutltName);
                 return resutltName;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -159,7 +157,6 @@ public class ShowIngredientData extends AppCompatActivity {
                         .build();
 
                 APIService service = retrofit.create(APIService.class);
-                System.out.println("Ingredietns data methid id input is : "  + foodID + enterSearchIngMeasurement+enterSearchIngAmt);
                 Call<IngredientsResponse> ingredientsResponseCall = service.getFoodInformation(foodID,enterSearchIngAmt,enterSearchIngMeasurement);
                 Response<IngredientsResponse> ingredientsResponse = ingredientsResponseCall.execute();
                 nutrientsList = ingredientsResponse.body().getNutrition().getNutrients();
@@ -185,8 +182,8 @@ public class ShowIngredientData extends AppCompatActivity {
 
             // setting list adapter
             expListView.setAdapter(listAdapter);
-            headerTitle.setText("Input: " + inputSearchIngName+ "\n Result Name: " + resutltName);
-            headerData.setText("Amount: " +enterSearchIngAmt+ " "+enterSearchIngMeasurement);
+            headerTitle.setText("Input: " + inputSearchIngName + "\n" + "Result Name: " + resutltName);
+            headerData.setText("Amount: " +enterSearchIngAmt+ " " + enterSearchIngMeasurement);
         }
 
     }

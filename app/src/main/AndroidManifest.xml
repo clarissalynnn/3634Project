@@ -12,36 +12,83 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditProfileActivity"></activity>
-        <activity android:name=".QuizResultActivity" />
-        <activity android:name=".QuizActivity" />
-        <activity android:name=".HealthyDietDetailActivity" />
-        <activity android:name=".HealthyDietActivity" />
-        <activity android:name=".NutritionTipsActivity" />
-        <activity android:name=".RecipeDetailActivity" />
-        <activity android:name=".IngredientActivity" />
-        <activity android:name=".RecipeActivity" />
-        <activity android:name=".SearchIngredientsData" />
-        <activity android:name=".ShowIngredientData" />
-        <activity android:name=".add_water"/>
-        <activity android:name=".add_vitamins"/>
-        <activity android:name=".add_fruits"/>
-        <activity android:name=".add_food"/>
+        <activity android:name=".EditProfileActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".QuizResultActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".QuizActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HealthyDietDetailActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HealthyDietActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".NutritionTipsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RecipeDetailActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".IngredientActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RecipeActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SearchIngredientsData"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ShowIngredientData"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".add_water">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".add_vitamins">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".add_fruits">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".add_food">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".SignUpActivity"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LoginActivity"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

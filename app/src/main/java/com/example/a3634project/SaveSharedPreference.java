@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 public class SaveSharedPreference {
 
     static final String PREF_EMAIL = "";
-    static final String PREF_PASSWORD ="";
+    static final String PREF_PASSWORD = "";
     static SharedPreferences getSharedPreferences(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx);
     }

@@ -40,10 +40,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
     TextView mTitle, mLike, mServing, mReadyIn, mHealthScore, mSummary, mInstruction;
     ImageButton mLaunchUrl;
     private ProgressDialog progressDialog;
-    private RecyclerView mRecyclerView;
-    private ExtendedIngredientsAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    List<ExtendedIngredient> extendedIngredientList;
     public static final String ARG_ITEM_ID = "item_id";
 
     @Override
@@ -51,17 +48,14 @@ public class RecipeDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_detail);
 
-
-
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setProgress(0);
         progressDialog.show();
-        mRecyclerView = findViewById(R.id.extendedIngredientRV);
 
-        mRecyclerView.setHasFixedSize(true);
+        //mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         
         new GetRecipeDetailTask().execute();
@@ -93,7 +87,6 @@ public class RecipeDetailActivity extends AppCompatActivity {
                 Call<RecipeDetailResponse> recipeDetailCall = service.getRecipeDetail(recipeId);
                 Response<RecipeDetailResponse> recipeDetailResponse = recipeDetailCall.execute();
                 RecipeDetailResponse recipeDetail = recipeDetailResponse.body();
-                 extendedIngredientList = recipeDetail.getExtendedIngredients();
                 return recipeDetail;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -103,7 +96,6 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(RecipeDetailResponse recipeDetail) {
-            //NumberFormat formatter = NumberFormat.getCurrencyInstance();
             Picasso.get().load(recipeDetail.getImage()).into(mImage);
             mTitle.setText(recipeDetail.getTitle());
             mLike.setText(String.valueOf(recipeDetail.getAggregateLikes()));
@@ -112,13 +104,6 @@ public class RecipeDetailActivity extends AppCompatActivity {
             mHealthScore.setText(String.valueOf(recipeDetail.getHealthScore()));
             mSummary.setText(Html.fromHtml(String.valueOf(Html.fromHtml(recipeDetail.getSummary()))));
             mInstruction.setText(recipeDetail.getInstructions());
-
-            ExtendedIngredient extendedIngredient = extendedIngredientList.get(0);
-            String ingredient = extendedIngredient.getName() +" "+extendedIngredient.getAmount()+ " "+ extendedIngredient.getUnit();
-            System.out.println(ingredient);
-            mRecyclerView.setLayoutManager(mLayoutManager);
-            mAdapter = new ExtendedIngredientsAdapter(extendedIngredientList);
-            mRecyclerView.setAdapter(mAdapter);
 
             mLaunchUrl.setOnClickListener(new View.OnClickListener() {
                 @Override

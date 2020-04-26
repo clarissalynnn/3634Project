@@ -52,9 +52,6 @@ public class ProfileFragment extends Fragment {
 
         userDao = database.getUserDao();
         user = userDao.getUser(SaveSharedPreference.getPrefEmail(getActivity()), SaveSharedPreference.getPrefPassword(getActivity()));
-        //SaveSharedPreference.getPrefEmail(MainActivity.class, user.getEmail());
-
-        //new GetRecipeTask().execute();
     }
 
     @Override
@@ -63,7 +60,6 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        //user = (User) getActivity().getIntent().getSerializableExtra("User");
         mName = v.findViewById(R.id.nameTv);
         mEmail = v.findViewById(R.id.emailTv);
         mWeight = v.findViewById(R.id.weightTv);

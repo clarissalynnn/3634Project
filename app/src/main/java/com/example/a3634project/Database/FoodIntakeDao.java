@@ -11,7 +11,7 @@ import java.util.List;
 import io.reactivex.Maybe;
 
 @Dao
-public interface DiaryDao {
+public interface FoodIntakeDao {
     @Query("SELECT * FROM diaryEntry")
     Maybe<List<DiaryEntry>> getAll();
 

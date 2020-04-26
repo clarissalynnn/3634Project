@@ -87,10 +87,8 @@ public class LoginActivity extends AppCompatActivity {
                                 /*SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putString()*/
-
                                 SaveSharedPreference.setPrefEmail(LoginActivity.this, user.getEmail());
                                 SaveSharedPreference.setPrefPassword(LoginActivity.this, user.getPassword());
-
                                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                                 i.putExtra("User", user);
                                 startActivity(i);

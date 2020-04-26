@@ -44,8 +44,8 @@ public class SearchIngredientsData extends AppCompatActivity {
         setContentView(R.layout.search_ingredients_data);
 
         foodName = findViewById(R.id.inputSearchIngNameTV);
-         foodAmt = findViewById(R.id.enterSearchIngAmtTV);
-         measurement = findViewById(R.id.enterSearchIngMeasurement);
+        foodAmt = findViewById(R.id.enterSearchIngAmtTV);
+        measurement = findViewById(R.id.enterSearchIngMeasurement);
 
         System.out.println(inputSearchIngName + enterSearchIngMeasurement + enterSearchIngAmt);
         button = findViewById(R.id.searchIngButton);

@@ -32,13 +32,11 @@ public class ShowIngredientData extends AppCompatActivity {
     private String resutltName;
     private String enterSearchIngMeasurement;
     private List<Nutrient> nutrientsList = new ArrayList<>();
-    private CaloricBreakdown caloricBreakdown;
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
     TextView headerData;
     TextView headerTitle;
-    private String header;
     HashMap<String, List<String>> listDataChild;
 
     @Override
@@ -59,49 +57,26 @@ public class ShowIngredientData extends AppCompatActivity {
     }
 
     /*
-     * Preparing the list data
+     * Preparing the list data. Referenced from: https://www.androidhive.info/2013/07/android-expandable-list-view-tutorial/
      */
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
-        // Adding child data
+        // Adding list header names into the array to be set
         listDataHeader.add("General Nutrient Data");
         listDataHeader.add("Minerals Data");
         listDataHeader.add("Vitamins Data");
-        listDataHeader.add("Caloric Breakdown");
 
         // Adding child data
         List<String> generalNutrients = new ArrayList<String>();
-        /*generalNutrients.add("Calorie: 0");
-        generalNutrients.add("Fat: ");
-        generalNutrients.add("Saturated Fat: ");
-        generalNutrients.add("Carbohydrates: ");
-        generalNutrients.add("Sugar");
-        generalNutrients.add("Cholesterol");
-        generalNutrients.add("Protein");
-        generalNutrients.add("Fibre");*/
-
         List<String> minerals = new ArrayList<String>();
-/*        minerals.add("Sodium");
-        minerals.add("Manganese");
-        minerals.add("Copper");
-        minerals.add("Potassium");
-        minerals.add("Magnesium");
-        minerals.add("Iron");*/
-
         List<String> vitamins = new ArrayList<String>();
-      /*  vitamins.add("Vitamin C");
-        vitamins.add("Vitamin B6");
-        vitamins.add("Folate");
-        vitamins.add("Vitamin B3");
-        vitamins.add("Vitamin B5");
-        vitamins.add("Vitamin B1");
-        vitamins.add("Vitamin A");*/
-        System.out.println(nutrientsList.size());
+
+        //Loop to add all nutritional information received into the 3 categories
         for(int i = 0;i <nutrientsList.size();i++) {
             if (nutrientsList.get(i).getTitle().contains("Fat") || nutrientsList.get(i).getTitle().contains("Carb") || nutrientsList.get(i).getTitle().contains("Sugar") ||
-                    nutrientsList.get(i).getTitle().contains("cholesterol") || nutrientsList.get(i).getTitle().contains("protein") || nutrientsList.get(i).getTitle().contains("fibre")) {
+                    nutrientsList.get(i).getTitle().contains("Cholesterol") || nutrientsList.get(i).getTitle().contains("Protein") || nutrientsList.get(i).getTitle().contains("Fibre")) {
                 generalNutrients.add(nutrientsList.get(i).getTitle() + ": " + nutrientsList.get(i).getAmount() + nutrientsList.get(i).getUnit() + "\n\n" + nutrientsList.get(i).getPercentOfDailyNeeds() + " % of daily needs");
             } else if (nutrientsList.get(i).getTitle().contains("Vitamin") || nutrientsList.get(i).getTitle().contains("Folate")) {
                 vitamins.add(nutrientsList.get(i).getTitle() + ": " + nutrientsList.get(i).getAmount() + nutrientsList.get(i).getUnit() + "\n" + nutrientsList.get(i).getPercentOfDailyNeeds() + " % of daily needs");}
@@ -109,16 +84,12 @@ public class ShowIngredientData extends AppCompatActivity {
             }
 
         }
-        List<String> calBreakdown = new ArrayList<String>();
-        calBreakdown.add(caloricBreakdown.getPercentProtein() +"% of daily protein requirement");
-        calBreakdown.add(caloricBreakdown.getPercentFat()+ "% of daily fat requirement");
-        calBreakdown.add(caloricBreakdown.getPercentCarbs()+"% of daily carbohydrates requirement");
 
-
+        //Sets the header/category name and data withing the general nutrient, mineral and vitamin data as a data child for each header.
         listDataChild.put(listDataHeader.get(0), generalNutrients); // Header, Child data
         listDataChild.put(listDataHeader.get(1), minerals);
         listDataChild.put(listDataHeader.get(2), vitamins);
-        //listDataChild.put(listDataHeader.get(3),calBreakdown);
+
     }
 
     private class GetIngredientIDTask extends AsyncTask<Void, Void, String> {
@@ -133,6 +104,8 @@ public class ShowIngredientData extends AppCompatActivity {
                 APIService service = retrofit.create(APIService.class);
                 Call<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponseCall = service.getAutocompleteIngredientsSearch(inputSearchIngName,1,true);
                 Response<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponse = ingredientsResponseCall.execute();
+
+                //Gets the ID of the food name that the user entered
                 foodID = ingredientsResponse.body().get(0).getId();
                 return resutltName;
             } catch (IOException e) {
@@ -161,9 +134,6 @@ public class ShowIngredientData extends AppCompatActivity {
                 Response<IngredientsResponse> ingredientsResponse = ingredientsResponseCall.execute();
                 nutrientsList = ingredientsResponse.body().getNutrition().getNutrients();
                 resutltName = ingredientsResponse.body().getName();
-                caloricBreakdown = ingredientsResponse.body().getNutrition().getCaloricBreakdown();
-
-
                 return String.valueOf(foodID);
             } catch (IOException e) {
                 e.printStackTrace();

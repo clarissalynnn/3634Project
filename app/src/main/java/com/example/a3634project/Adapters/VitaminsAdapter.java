@@ -57,6 +57,7 @@ public class VitaminsAdapter extends RecyclerView.Adapter<VitaminsAdapter.vitami
             mPlusImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //If statement to prevent the amount from going into negatives
                     if(intake>-1){
                         intake++;
                         mIntakeInput.setText(Integer.toString(intake));

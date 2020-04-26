@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class add_food extends AppCompatActivity {
+public class AddFoodActivity extends AppCompatActivity {
 
     // following code adapted from: https://www.studytonight.com/android/get-edittext-set-textview
     // Get value from the EditText and Set Value to the TextView n.d, Study Tonight, viewed 26 April 2020, <studytonight.com/android/get-edittext-set-textview>

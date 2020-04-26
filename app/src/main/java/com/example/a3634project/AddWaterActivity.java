@@ -14,7 +14,7 @@ import com.example.a3634project.Adapters.WaterAdapter;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class add_water extends AppCompatActivity {
+public class AddWaterActivity extends AppCompatActivity {
     private TextView mWaterFacts;
     private TextView mIntakeInput;
     private RecyclerView mRecyclerView;

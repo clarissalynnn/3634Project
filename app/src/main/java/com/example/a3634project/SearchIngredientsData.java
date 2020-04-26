@@ -27,14 +27,11 @@ public class SearchIngredientsData extends AppCompatActivity {
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //On click, extract user input from edit text and pass the data to the next activity
             inputSearchIngName = foodName.getText().toString();
             enterSearchIngAmt = foodAmt.getText().toString();
-            int amt = Integer.parseInt(enterSearchIngAmt);
             enterSearchIngMeasurement = measurement.getSelectedItem().toString();
             launchIngredientsDataActivity(inputSearchIngName, enterSearchIngAmt, enterSearchIngMeasurement);
-            System.out.println(inputSearchIngName);
-            System.out.println(enterSearchIngAmt);
-            System.out.println(enterSearchIngMeasurement);
         }
     };
 
@@ -47,7 +44,6 @@ public class SearchIngredientsData extends AppCompatActivity {
         foodAmt = findViewById(R.id.enterSearchIngAmtTV);
         measurement = findViewById(R.id.enterSearchIngMeasurement);
 
-        System.out.println(inputSearchIngName + enterSearchIngMeasurement + enterSearchIngAmt);
         button = findViewById(R.id.searchIngButton);
         button.setOnClickListener(mOnClickListener);
 

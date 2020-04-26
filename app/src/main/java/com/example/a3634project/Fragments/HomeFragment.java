@@ -1,44 +1,32 @@
 package com.example.a3634project.Fragments;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.a3634project.Adapters.HomeAdapter;
-import com.example.a3634project.Adapters.TopicAdapter;
 import com.example.a3634project.Database.UserDao;
 import com.example.a3634project.Database.UserDatabase;
 import com.example.a3634project.R;
 import com.example.a3634project.Models.User;
 import com.example.a3634project.SaveSharedPreference;
-import com.example.a3634project.SpoonacularAPI.APIService;
-import com.example.a3634project.add_food;
-import com.example.a3634project.add_fruits;
-import com.example.a3634project.add_vitamins;
-import com.example.a3634project.add_water;
+import com.example.a3634project.AddFoodActivity;
+import com.example.a3634project.AddFruitsActivity;
+import com.example.a3634project.AddVitaminsActivity;
+import com.example.a3634project.AddWaterActivity;
 import com.example.a3634project.homeListItem;
-import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
 import java.util.Calendar;
-
-import retrofit2.Call;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment {
     private RecyclerView mRecyclerView;
@@ -115,25 +103,25 @@ public class HomeFragment extends Fragment {
 
     // launch add water activity
     private void launchAddWaterActivity(){
-        Intent intent = new Intent(getActivity(), add_water.class);
+        Intent intent = new Intent(getActivity(), AddWaterActivity.class);
         startActivity(intent);
 }
 
     // launch add vitamins activity
     private void launchAddVitaminsActivity(){
-        Intent intent = new Intent(getActivity(), add_vitamins.class);
+        Intent intent = new Intent(getActivity(), AddVitaminsActivity.class);
         startActivity(intent);
 }
 
     //launch add fruits activity
     private void launchAddFruitsActivity(){
-        Intent intent = new Intent(getActivity(), add_fruits.class);
+        Intent intent = new Intent(getActivity(), AddFruitsActivity.class);
         startActivity(intent);
 }
 
     //launch add food activity
     private void launchAddFoodActivity(){
-        Intent intent = new Intent(getActivity(), add_food.class);
+        Intent intent = new Intent(getActivity(), AddFoodActivity.class);
         startActivity(intent);
 }
 

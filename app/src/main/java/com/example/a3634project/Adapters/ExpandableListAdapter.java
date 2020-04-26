@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.example.a3634project.R;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
-
+//Referenced from: https://www.androidhive.info/2013/07/android-expandable-list-view-tutorial/
     private Context _context;
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title

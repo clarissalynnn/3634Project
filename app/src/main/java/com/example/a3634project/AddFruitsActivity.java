@@ -10,7 +10,7 @@ import com.example.a3634project.Adapters.FruitsAdapter;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class add_fruits extends AppCompatActivity {
+public class AddFruitsActivity extends AppCompatActivity {
 
     public RecyclerView mRecyclerView;
     public RecyclerView.Adapter mAdapter;

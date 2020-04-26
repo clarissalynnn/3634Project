@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
     private boolean emptyValidation() {
         if (TextUtils.isEmpty(edtEmail.getText().toString()) || TextUtils.isEmpty(edtPassword.getText().toString())) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }

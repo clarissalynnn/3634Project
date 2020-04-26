@@ -21,6 +21,16 @@ public class ExtendedIngredientsAdapter extends RecyclerView.Adapter<ExtendedIng
     public ExtendedIngredientsAdapter(List<ExtendedIngredient> extendedIngredientsList){
         this.extendedIngredientsList = extendedIngredientsList;
     }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView extendedIngredients;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            extendedIngredients = itemView.findViewById(R.id.extendedIngredientItem);
+        }
+    }
+
     @NonNull
     @Override
     public ExtendedIngredientsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,21 +41,13 @@ public class ExtendedIngredientsAdapter extends RecyclerView.Adapter<ExtendedIng
     @Override
     public void onBindViewHolder(@NonNull ExtendedIngredientsAdapter.ViewHolder holder, int position) {
         ExtendedIngredient extendedIngredient = extendedIngredientsList.get(position);
-        String ingredient = extendedIngredient.getName() +" "+extendedIngredient.getAmount()+ " "+ extendedIngredient.getOriginalString();
+        String ingredient = extendedIngredient.getName() + " " + extendedIngredient.getAmount()+ " " + extendedIngredient.getOriginalString();
         holder.extendedIngredients.setText(ingredient);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView extendedIngredients;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            extendedIngredients = itemView.findViewById(R.id.extendedIngredientItem);
-        }
+        return extendedIngredientsList.size();
     }
 
     public void setExtendedIngredients(List<ExtendedIngredient> extendedIngredientList) {

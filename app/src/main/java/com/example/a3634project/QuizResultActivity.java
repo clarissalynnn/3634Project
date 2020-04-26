@@ -64,7 +64,7 @@ public class QuizResultActivity extends AppCompatActivity {
             message = "Well Done!";
         } else if (score >= 75){
             message = "Good Job!";
-        } else if (score >= 65){
+        } else if (score >= 50){
             message = "Not too bad!";
         } else {
             message = "It's OK, try again next time!";

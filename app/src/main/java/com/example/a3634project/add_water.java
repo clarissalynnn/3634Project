@@ -23,6 +23,7 @@ public class add_water extends AppCompatActivity {
 
     String [] waterFacts = {
             // facts are from https://www.health24.com/Diet-and-nutrition/Beverages/12-interesting-water-facts-20120721
+            // 12 interesting facts about water 2019, Health24, viewed 22 April 2020, <https://www.health24.com/Diet-and-nutrition/Beverages/12-interesting-water-facts-20120721>
             "Did you know that our body is made up of 55 - 75% water?",
             "It is healthy to drink water while eating as it aids the process of digestion",
             "Good water intake prevents the skin from sagging",
@@ -49,11 +50,12 @@ public class add_water extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
             switch(position){
+                // When the first item in the recyclerview is clicked, update intakeInput by 250.
                 case 0:
                 intake += 250;
                 mIntakeInput.setText(Integer.toString(intake) + " ml");
                 break;
-
+                // When the second item in the recyclerview is clicked, update intakeInput by 500.
                 case 1:
                     intake += 500;
                     mIntakeInput.setText(Integer.toString(intake) + " ml");

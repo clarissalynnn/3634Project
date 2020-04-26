@@ -23,6 +23,8 @@ import java.util.ArrayList;
 public class FruitsAdapter extends RecyclerView.Adapter <FruitsAdapter.fruitsViewHolder> {
 private ArrayList<FruitListItem> mFruitsList;
 
+    // code adapted from Coding In Flow
+    // RecyclerView + CardView - Part 4 - On Item Click Interface - Android Studio Tutorial 2017, video recording, Coding in Flow, <https://www.youtube.com/watch?v=bhhs4bwYyhc&t=99s>
     public static class fruitsViewHolder extends RecyclerView.ViewHolder{
         public ImageView mFruitImage;
         public TextView mFruitName;
@@ -36,6 +38,7 @@ private ArrayList<FruitListItem> mFruitsList;
             mCheckBox = itemView.findViewById(R.id.fruitsCheck);
 
             // code adapted from https://stackoverflow.com/questions/8386832/android-checkbox-listener
+            //Android: checkbox listener 2019, StackOverflow, viewed 22 April 2020, <https://stackoverflow.com/questions/8386832/android-checkbox-listener>
             mCheckBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

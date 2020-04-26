@@ -19,10 +19,12 @@ public class add_fruits extends AppCompatActivity {
 
     String[] fruitsFacts = {
             //facts adapted from: https://www.juiceplus.com/at/en/juice-plus-experience/magazine.read.html/en/2018/3/9-fun-facts-about-fruit-and-vegetables-to-teach-your-kids.html
+            // 9 fun facts about fruit and vegetables to teach your kids 2018, JuicePlus, viewed 22 April 2020, <https://www.juiceplus.com/at/en/juice-plus-experience/magazine.read.html/en/2018/3/9-fun-facts-about-fruit-and-vegetables-to-teach-your-kids.html>
             "Did you know that strawberries are not actually berries since they hold their seeds outside?",
             "Did you know that a pomegranate can hold up to 1000 seeds?",
             "Did you know that not all oranges are orange?",
             //facts adapted from: https://www.befitandfine.com/facts-of-fruits/
+            // Nanda S n.d, Fruits facts: amazing facts of fruits you probably did not know, Be Fit and Fine, viewed 22 April 2020, <https://www.befitandfine.com/facts-of-fruits/>
             "Did you know that apples, peaches and raspberries are all members of the rose group?",
             "Did you know that square watermelons are grown by Japanese farmers for easier stack and store?",
             "Did you know that there are 7000 different kinds of apples grown around the globe?",
@@ -31,7 +33,7 @@ public class add_fruits extends AppCompatActivity {
             "Did you know that yellow-colored fruits prevent you from getting sick?"
     };
 
-    // generate ranodm quotes from the Array above
+    // generate random quotes from the Array above
     Random random = new Random();
     int fruitsFacts1 = random.nextInt(fruitsFacts.length);
     String fruitsFactsDisplay = fruitsFacts[fruitsFacts1];
@@ -61,14 +63,14 @@ public class add_fruits extends AppCompatActivity {
         //lemon pexels.com
         // Fotios L 2018, Close-up photography of sliced lemon, Pexels, viewed 22 April 2020, <https://www.pexels.com/photo/close-up-photography-of-sliced-lemon-1002543/>
         fruitsList.add(new FruitListItem(R.drawable.lemon1, "Lemon"));
-        //mango best-wallpaper.net
+        //mango unsplash.com
         // Hotchicksing 2018, Tray of mango photo, Unsplash, viewed 26 April 2020, <https://unsplash.com/photos/Dyc95dKuGp4>
         fruitsList.add(new FruitListItem(R.drawable.mango2, "Mango"));
         //orange unsplash.com
         // Mu M 2019, Orange fruit photo, Unsplash, viewed 26 April 2020, <https://unsplash.com/photos/U1iYwZ8Dx7k>
         fruitsList.add(new FruitListItem(R.drawable.orange2, "Orange"));
         //passionfruit healthline.com
-        //
+        // Butler N 2016, How to eat passionfruit: 5 easy steps, Healthline, viewed 26 April 2020, <https://www.healthline.com/health/food-nutrition/how-to-eat-passion-fruit#1>
         fruitsList.add(new FruitListItem(R.drawable.passionfruit1, "Passionfruit"));
         //peach unsplash.com
         // Hunt L 2018, Crate of reed fruit photo, Unsplash, viewed 26 April 2020, <https://unsplash.com/photos/O3TlS547j7k>
@@ -101,6 +103,8 @@ public class add_fruits extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recyclerViewFruits);
         mRecyclerView.setHasFixedSize(true);
         mAdapter = new FruitsAdapter(fruitsList);
+        //code adapted from Aws RH on youtube
+        //RecyclerView + CardView with GridLayout Android Studio Tutorial 2018, video recording, Aws RH, <https://www.youtube.com/watch?v=SD2t75T5RdY&t=1586s>
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mRecyclerView.setAdapter(mAdapter);
         mFruitFacts = findViewById(R.id.fruitsFacts);

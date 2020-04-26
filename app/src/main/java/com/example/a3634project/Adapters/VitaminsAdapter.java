@@ -37,7 +37,7 @@ public class VitaminsAdapter extends RecyclerView.Adapter<VitaminsAdapter.vitami
 
         public vitaminsViewHolder(View itemView) {
             super(itemView);
-            /vitaminIntakeDao = Room.databaseBuilder(this, VitaminIntakeDatabase.class, "vitamin-database.db")
+            /*vitaminIntakeDao = Room.databaseBuilder(this, VitaminIntakeDatabase.class, "vitamin-database.db")
                     .allowMainThreadQueries()
                     .build()
                     .getUserDao();*/
@@ -54,6 +54,8 @@ public class VitaminsAdapter extends RecyclerView.Adapter<VitaminsAdapter.vitami
                 }
             });
 
+        // code adapted from: https://www.youtube.com/watch?v=Wpywg8-1Q3Q
+            // #10 Android studio tutorial - How to count number of Button clicks in Android. NEW 2016, video recording, ATTRACTION, <https://www.youtube.com/watch?v=Wpywg8-1Q3Q>
             mPlusImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

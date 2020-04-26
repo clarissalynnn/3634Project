@@ -81,6 +81,8 @@ public class HomeFragment extends Fragment {
 
         mRecyclerView = v.findViewById(R.id.homeRecyclerView);
         mRecyclerView.setHasFixedSize(true);
+        //code adapted from Aws RH on youtube
+        //RecyclerView + CardView with GridLayout Android Studio Tutorial 2018, video recording, Aws RH, <https://www.youtube.com/watch?v=SD2t75T5RdY&t=1586s>
         mLayoutManager = new GridLayoutManager(getActivity(), 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
         TextView greetings = v.findViewById(R.id.greetingsTv);

@@ -15,7 +15,7 @@ import com.example.a3634project.SpoonacularAPI.Recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExtendedIngredientsAdapter extends RecyclerView.Adapter<ExtendedIngredientsAdapter.EIViewHolder>  {
+public class ExtendedIngredientsAdapter extends RecyclerView.Adapter<ExtendedIngredientsAdapter.ViewHolder>  {
     private List<ExtendedIngredient> extendedIngredientsList;
 
     public ExtendedIngredientsAdapter(List<ExtendedIngredient> extendedIngredientsList){
@@ -23,13 +23,13 @@ public class ExtendedIngredientsAdapter extends RecyclerView.Adapter<ExtendedIng
     }
     @NonNull
     @Override
-    public ExtendedIngredientsAdapter.EIViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ExtendedIngredientsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
       View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.extended_ingredients_row, parent, false);
-        return null;
+        return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ExtendedIngredientsAdapter.EIViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ExtendedIngredientsAdapter.ViewHolder holder, int position) {
         ExtendedIngredient extendedIngredient = extendedIngredientsList.get(position);
         String ingredient = extendedIngredient.getName() +" "+extendedIngredient.getAmount()+ " "+ extendedIngredient.getOriginalString();
         holder.extendedIngredients.setText(ingredient);
@@ -40,11 +40,11 @@ public class ExtendedIngredientsAdapter extends RecyclerView.Adapter<ExtendedIng
         return 0;
     }
 
-    public class EIViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView extendedIngredients;
-        public EIViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            extendedIngredients = itemView.findViewById(R.id.extendedIngredient);
+            extendedIngredients = itemView.findViewById(R.id.extendedIngredientItem);
         }
     }
 

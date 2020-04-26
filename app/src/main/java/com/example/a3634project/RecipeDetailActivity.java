@@ -60,8 +60,10 @@ public class RecipeDetailActivity extends AppCompatActivity {
         progressDialog.setProgress(0);
         progressDialog.show();
         mRecyclerView = findViewById(R.id.extendedIngredientRV);
+
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
+        
         new GetRecipeDetailTask().execute();
 
         mImage = findViewById(R.id.recipeImageIv);

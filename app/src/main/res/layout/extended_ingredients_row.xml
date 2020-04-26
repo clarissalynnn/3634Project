@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/extendedIngredient"
+            android:id="@+id/extendedIngredientItem"
             android:layout_width="105dp"
             android:layout_height="25dp"
             android:layout_marginStart="10dp"

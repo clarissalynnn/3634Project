@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 public class add_food extends AppCompatActivity {
 
-    //following code adapted from: https://www.studytonight.com/android/get-edittext-set-textview
-
+    // following code adapted from: https://www.studytonight.com/android/get-edittext-set-textview
+    // Get value from the EditText and Set Value to the TextView n.d, Study Tonight, viewed 26 April 2020, <studytonight.com/android/get-edittext-set-textview>
     public EditText mBreakfastInput;
     public EditText mLunchInput;
     public EditText mDinnerInput;
@@ -47,6 +47,7 @@ public class add_food extends AppCompatActivity {
         mDinnerDisplay = findViewById(R.id.dinnerDisplay);
         mSnacksDisplay = findViewById(R.id.snacksDisplay);
 
+        // When users press the save button for each prompt, the value that the user has input will be displayed in the TextView above it.
         mSaveBreakfast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

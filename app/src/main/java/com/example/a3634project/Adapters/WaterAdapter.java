@@ -16,6 +16,9 @@ import com.example.a3634project.waterListItem;
 import java.util.ArrayList;
 
 public class WaterAdapter extends RecyclerView.Adapter <WaterAdapter.ViewHolder> {
+
+    // code adapted from Coding In Flow
+    // RecyclerView + CardView - Part 4 - On Item Click Interface - Android Studio Tutorial 2017, video recording, Coding in Flow, <https://www.youtube.com/watch?v=bhhs4bwYyhc&t=99s>
 private ArrayList<waterListItem> mWaterListItems;
 private RecyclerViewClickListener mListener;
 

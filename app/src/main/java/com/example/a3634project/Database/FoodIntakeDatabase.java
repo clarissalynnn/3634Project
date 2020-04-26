@@ -9,14 +9,14 @@ import androidx.room.RoomDatabase;
 import com.example.a3634project.DiaryEntry;
 
 @Database(entities = {DiaryEntry.class}, version = 1)
-public abstract class DiaryDatabase extends RoomDatabase {
+public abstract class FoodIntakeDatabase extends RoomDatabase {
 
-    private static DiaryDatabase INSTANCE;
+    private static FoodIntakeDatabase INSTANCE;
 
-    public static DiaryDatabase getDiaryDatabase(Context context) {
+    public static FoodIntakeDatabase getDiaryDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
-                    Room.databaseBuilder(context.getApplicationContext(), DiaryDatabase.class, "diaryDatabase").build();
+                    Room.databaseBuilder(context.getApplicationContext(), FoodIntakeDatabase.class, "diaryDatabase").build();
         }
         return INSTANCE;
     }
@@ -25,6 +25,6 @@ public abstract class DiaryDatabase extends RoomDatabase {
         INSTANCE = null;
     }
 
-    public abstract DiaryDao diaryDao();
+    public abstract FoodIntakeDao diaryDao();
 
 }

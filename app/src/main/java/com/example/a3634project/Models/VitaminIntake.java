@@ -10,20 +10,18 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Entity
-public class UserIntakeInput {
+public class VitaminIntake {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
      public int uid;
      public String vitamin_names;
     public int userId;
-    //private List<Integer> quantity;
     public  String input_timestamp;
 
-    public UserIntakeInput(String vitamin_names, int userId /*,List<Integer> quantity*/, String input_timestamp){
+    public VitaminIntake(String vitamin_names, int userId , String input_timestamp){
         this.vitamin_names = vitamin_names;
         this.userId = userId;
-        //this.quantity = quantity;
         this.input_timestamp = input_timestamp;
 
     };

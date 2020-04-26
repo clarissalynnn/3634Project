@@ -29,6 +29,7 @@ public class ShowIngredientData extends AppCompatActivity {
     private String inputSearchIngName;
     private int enterSearchIngAmt;
     private int foodID;
+    private String resutltName;
     private String enterSearchIngMeasurement;
     private List<Nutrient> nutrientsList = new ArrayList<>();
     private CaloricBreakdown caloricBreakdown;
@@ -36,6 +37,7 @@ public class ShowIngredientData extends AppCompatActivity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     TextView headerData;
+    TextView headerTitle;
     private String header;
     HashMap<String, List<String>> listDataChild;
 
@@ -45,13 +47,14 @@ public class ShowIngredientData extends AppCompatActivity {
         setContentView(R.layout.show_ingredient_data);
         inputSearchIngName = getIntent().getStringExtra("INGREDIENT_NAME");
         if(getIntent().getStringExtra("AMOUNT")!=null){
-        enterSearchIngAmt = Integer.parseInt(getIntent().getStringExtra("AMOUNT"));}
+            enterSearchIngAmt = Integer.parseInt(getIntent().getStringExtra("AMOUNT"));}
         enterSearchIngMeasurement = getIntent().getStringExtra("MEASUREMENT");
-         header = inputSearchIngName + " , " + enterSearchIngAmt +" "+ enterSearchIngMeasurement;
-        headerData =findViewById(R.id.nutrientTitle);
-        headerData.setText(header);
+        headerTitle = findViewById(R.id.nutrientTitle);
+        headerData = findViewById(R.id.nutrientInput);
+
         //new GetIngredientIDTask().doInBackground();
         new GetIngredientIDTask().execute();
+
 
 
     }
@@ -97,17 +100,16 @@ public class ShowIngredientData extends AppCompatActivity {
         vitamins.add("Vitamin B1");
         vitamins.add("Vitamin A");*/
         System.out.println(nutrientsList.size());
-      for(int i = 0;i <nutrientsList.size();i++) {
-          System.out.println(nutrientsList.size());
-          if (nutrientsList.get(i).getTitle().contains("Fat") || nutrientsList.get(i).getTitle().contains("Carb") || nutrientsList.get(i).getTitle().contains("Sugar") ||
-                  nutrientsList.get(i).getTitle().contains("cholesterol") || nutrientsList.get(i).getTitle().contains("protein") || nutrientsList.get(i).getTitle().contains("fibre")) {
-              generalNutrients.add(nutrientsList.get(i).getTitle() + ": " + nutrientsList.get(i).getAmount() + nutrientsList.get(i).getUnit() + " ;" + nutrientsList.get(i).getPercentOfDailyNeeds());
-          } else if (nutrientsList.get(i).getTitle().contains("Vitamin") || nutrientsList.get(i).getTitle().contains("Folate")) {
-              vitamins.add(nutrientsList.get(i).getTitle() + ": " + nutrientsList.get(i).getAmount() + nutrientsList.get(i).getUnit() + " ;" + nutrientsList.get(i).getPercentOfDailyNeeds());}
-              else { {minerals.add(nutrientsList.get(i).getTitle()+": "+nutrientsList.get(i).getAmount()+nutrientsList.get(i).getUnit()+" ;"+nutrientsList.get(i).getPercentOfDailyNeeds());}
-              }
+        for(int i = 0;i <nutrientsList.size();i++) {
+            if (nutrientsList.get(i).getTitle().contains("Fat") || nutrientsList.get(i).getTitle().contains("Carb") || nutrientsList.get(i).getTitle().contains("Sugar") ||
+                    nutrientsList.get(i).getTitle().contains("cholesterol") || nutrientsList.get(i).getTitle().contains("protein") || nutrientsList.get(i).getTitle().contains("fibre")) {
+                generalNutrients.add(nutrientsList.get(i).getTitle() + ": " + nutrientsList.get(i).getAmount() + nutrientsList.get(i).getUnit() + "\n\n" + nutrientsList.get(i).getPercentOfDailyNeeds() + " % of daily needs");
+            } else if (nutrientsList.get(i).getTitle().contains("Vitamin") || nutrientsList.get(i).getTitle().contains("Folate")) {
+                vitamins.add(nutrientsList.get(i).getTitle() + ": " + nutrientsList.get(i).getAmount() + nutrientsList.get(i).getUnit() + "\n" + nutrientsList.get(i).getPercentOfDailyNeeds() + " % of daily needs");}
+            else { {minerals.add(nutrientsList.get(i).getTitle()+": "+nutrientsList.get(i).getAmount()+nutrientsList.get(i).getUnit()+"\n" + nutrientsList.get(i).getPercentOfDailyNeeds() + " % of daily needs");}
+            }
 
-      }
+        }
         List<String> calBreakdown = new ArrayList<String>();
         calBreakdown.add(caloricBreakdown.getPercentProtein() +"% of daily protein requirement");
         calBreakdown.add(caloricBreakdown.getPercentFat()+ "% of daily fat requirement");
@@ -117,7 +119,7 @@ public class ShowIngredientData extends AppCompatActivity {
         listDataChild.put(listDataHeader.get(0), generalNutrients); // Header, Child data
         listDataChild.put(listDataHeader.get(1), minerals);
         listDataChild.put(listDataHeader.get(2), vitamins);
-        listDataChild.put(listDataHeader.get(3),calBreakdown);
+        //listDataChild.put(listDataHeader.get(3),calBreakdown);
     }
 
     private class GetIngredientIDTask extends AsyncTask<Void, Void, String> {
@@ -133,9 +135,8 @@ public class ShowIngredientData extends AppCompatActivity {
                 Call<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponseCall = service.getAutocompleteIngredientsSearch(inputSearchIngName,1,true);
                 Response<ArrayList<AutocompleteIngredientsResponse>> ingredientsResponse = ingredientsResponseCall.execute();
                 foodID = ingredientsResponse.body().get(0).getId();
-                String foodIDString = String.valueOf(foodID);
-                System.out.println("JOOOOOOOOOOOOOOO"+ foodIDString);
-                return foodIDString;
+                System.out.println("JOOOOOOOOOOOOOOO"+ resutltName);
+                return resutltName;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -162,12 +163,9 @@ public class ShowIngredientData extends AppCompatActivity {
                 Call<IngredientsResponse> ingredientsResponseCall = service.getFoodInformation(foodID,enterSearchIngAmt,enterSearchIngMeasurement);
                 Response<IngredientsResponse> ingredientsResponse = ingredientsResponseCall.execute();
                 nutrientsList = ingredientsResponse.body().getNutrition().getNutrients();
+                resutltName = ingredientsResponse.body().getName();
                 caloricBreakdown = ingredientsResponse.body().getNutrition().getCaloricBreakdown();
-                for (int i = 0;i<5;i++){
-                    System.out.println(caloricBreakdown.getPercentFat());
-                    System.out.println(caloricBreakdown.getPercentCarbs());
-                    System.out.println(caloricBreakdown.getPercentProtein());
-                }
+
 
                 return String.valueOf(foodID);
             } catch (IOException e) {
@@ -187,6 +185,8 @@ public class ShowIngredientData extends AppCompatActivity {
 
             // setting list adapter
             expListView.setAdapter(listAdapter);
+            headerTitle.setText("Input: " + inputSearchIngName+ "\n Result Name: " + resutltName);
+            headerData.setText("Amount: " +enterSearchIngAmt+ " "+enterSearchIngMeasurement);
         }
 
     }

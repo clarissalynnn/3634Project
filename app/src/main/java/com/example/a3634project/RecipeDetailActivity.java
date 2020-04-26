@@ -15,11 +15,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.a3634project.SpoonacularAPI.APIService;
+import com.example.a3634project.SpoonacularAPI.ExtendedIngredient;
 import com.example.a3634project.SpoonacularAPI.RecipeDetailResponse;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.text.NumberFormat;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -74,6 +76,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
                 Call<RecipeDetailResponse> recipeDetailCall = service.getRecipeDetail(recipeId);
                 Response<RecipeDetailResponse> recipeDetailResponse = recipeDetailCall.execute();
                 RecipeDetailResponse recipeDetail = recipeDetailResponse.body();
+                List<ExtendedIngredient> extendedIngredientList = recipeDetail.getExtendedIngredients();
                 return recipeDetail;
             } catch (IOException e) {
                 e.printStackTrace();

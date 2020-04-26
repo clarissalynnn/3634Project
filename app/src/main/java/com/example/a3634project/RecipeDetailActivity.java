@@ -1,6 +1,9 @@
 package com.example.a3634project;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,13 +17,17 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.a3634project.Adapters.ExtendedIngredientsAdapter;
+import com.example.a3634project.Adapters.RecipeAdapter;
 import com.example.a3634project.SpoonacularAPI.APIService;
 import com.example.a3634project.SpoonacularAPI.ExtendedIngredient;
+import com.example.a3634project.SpoonacularAPI.Recipe;
 import com.example.a3634project.SpoonacularAPI.RecipeDetailResponse;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -33,6 +40,10 @@ public class RecipeDetailActivity extends AppCompatActivity {
     TextView mTitle, mLike, mServing, mReadyIn, mHealthScore, mSummary, mInstruction;
     ImageButton mLaunchUrl;
     private ProgressDialog progressDialog;
+    private RecyclerView mRecyclerView;
+    private ExtendedIngredientsAdapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    List<ExtendedIngredient> extendedIngredientList;
     public static final String ARG_ITEM_ID = "item_id";
 
     @Override
@@ -40,13 +51,17 @@ public class RecipeDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_detail);
 
+
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setProgress(0);
         progressDialog.show();
-
+        mRecyclerView = findViewById(R.id.extendedIngredientRV);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
         new GetRecipeDetailTask().execute();
 
         mImage = findViewById(R.id.recipeImageIv);
@@ -76,7 +91,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
                 Call<RecipeDetailResponse> recipeDetailCall = service.getRecipeDetail(recipeId);
                 Response<RecipeDetailResponse> recipeDetailResponse = recipeDetailCall.execute();
                 RecipeDetailResponse recipeDetail = recipeDetailResponse.body();
-                List<ExtendedIngredient> extendedIngredientList = recipeDetail.getExtendedIngredients();
+                 extendedIngredientList = recipeDetail.getExtendedIngredients();
                 return recipeDetail;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -95,6 +110,14 @@ public class RecipeDetailActivity extends AppCompatActivity {
             mHealthScore.setText(String.valueOf(recipeDetail.getHealthScore()));
             mSummary.setText(Html.fromHtml(String.valueOf(Html.fromHtml(recipeDetail.getSummary()))));
             mInstruction.setText(recipeDetail.getInstructions());
+
+            ExtendedIngredient extendedIngredient = extendedIngredientList.get(0);
+            String ingredient = extendedIngredient.getName() +" "+extendedIngredient.getAmount()+ " "+ extendedIngredient.getUnit();
+            System.out.println(ingredient);
+            mRecyclerView.setLayoutManager(mLayoutManager);
+            mAdapter = new ExtendedIngredientsAdapter(extendedIngredientList);
+            mRecyclerView.setAdapter(mAdapter);
+
             mLaunchUrl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

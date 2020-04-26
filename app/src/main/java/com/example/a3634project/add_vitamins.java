@@ -4,11 +4,14 @@ package com.example.a3634project;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.a3634project.Adapters.VitaminsAdapter;
+import com.example.a3634project.Database.VitaminIntakeDao;
+import com.example.a3634project.Database.VitaminIntakeDatabase;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -20,6 +23,7 @@ public class add_vitamins extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private TextView mVitaminsFacts;
+    private VitaminIntakeDao vitaminIntakeDao;
 
     String [] vitaminsFacts ={
             "Did you know that Vitamin A is the first vitamin ever discovered?",
@@ -59,5 +63,11 @@ public class add_vitamins extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
         mVitaminsFacts = findViewById(R.id.vitaminsFacts);
         mVitaminsFacts.setText(randomVitFacts1);
+        vitaminIntakeDao = Room.databaseBuilder(this, VitaminIntakeDatabase.class, "vitamin-database.db")
+                .allowMainThreadQueries()
+                .build()
+                .getVitaminIntakeDao();
+
     }
+
 }

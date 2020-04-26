@@ -31,16 +31,13 @@ public class VitaminsAdapter extends RecyclerView.Adapter<VitaminsAdapter.vitami
         public ImageView mMinusImage;
         public Button mButton;
         public TextView mIntakeInput;
-        private VitaminIntakeDao vitaminIntakeDao;
+
         int intake = 0;
 
 
         public vitaminsViewHolder(View itemView) {
             super(itemView);
-            /vitaminIntakeDao = Room.databaseBuilder(this, VitaminIntakeDatabase.class, "vitamin-database.db")
-                    .allowMainThreadQueries()
-                    .build()
-                    .getUserDao();*/
+
             mVitaminsImage = itemView.findViewById(R.id.vitaminsImage);
             mVitaminsName = itemView.findViewById(R.id.vitaminsName);
             mPlusImage = itemView.findViewById(R.id.plusIntakeVits);
